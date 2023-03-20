@@ -3,14 +3,12 @@
   Super = Windows Key
 
 # common operations
-  Super          Return   *term* (`kitty`)
+  Super          Return   *term* (`foot`)
   Super          q        *quit* (kill focused window)
   Super   Shift  q        *quit* (kill focused window)
   Super          d        *show app menu* (`wofi small`)
   Super   Shift  d        *show app menu* (`wofi large`)
-  Super          x        *show archlinux-logout* (lock/suspend/logout/reboot/shutdown)
-  Super   Shift  r        *reload config files* (`hyprland reload`)
-  Super          Escape   *kill application*
+  Super   Shift  c        *reload config files* (`hyprland reload`)
 
 # screenshot
   PrintSrc                *full screenshot*
@@ -18,10 +16,8 @@
   Ctrl   PrintSrc         *full screenshot + timer*
 
 # application shortcuts
-  Ctrl    Alt U           *pavucontrol*
-  Ctrl    ALT P           *pamac-manager*
+
   Super   Shift  Return   *file manager* (`thunar`)
-  Super   F1              *browser* (`firefox`)
 
 # container layout
  
