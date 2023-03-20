@@ -3,6 +3,7 @@ my hyprland dotfiles for my Asus G15 2021 - Gentoo / Arch
 
 Credits mostly to Arco Linux Hyprland as I got more scripts and styles from them
 
+
 Its the same dotfiles I am using for my desktop so check out accordingly on the configs
 
 known issues:
