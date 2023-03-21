@@ -40,11 +40,3 @@
   - Follow the wiki - https://wiki.hyprland.org/
   - Follow the github - https://github.com/hyprwm/Hyprland
 
-# user githubs
-  - https://github.com/eldermf/bspwm-hyprland
-  - https://github.com/lauroro/hyprland-dotfiles
-  - https://github.com/eneshecan/dotfiles
-
-# share your own files on github 
-  - so we can all learn
-  - and you have a backup
