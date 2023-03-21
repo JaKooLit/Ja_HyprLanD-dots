@@ -10,14 +10,18 @@
   Super   Shift  d        *show app menu* (`wofi large`)
   Super   Shift  c        *reload config files* (`hyprland reload`)
 
-# screenshot
+# screenshot (on desktop with printscreen key)
   PrintSrc                *full screenshot*
   Shift  PrintSrc         *active window screenshot*
   Ctrl   PrintSrc         *full screenshot + timer*
+  
+# screenshot (ASus-G15)
+  Super F6                *full screenshot*
+  Super Shift  F6         *active window screenshot*
 
 # application shortcuts
 
-  Super   Shift  Return   *file manager* (`thunar`)
+  Super   T               *file manager* (`thunar`)
 
 # container layout
  
