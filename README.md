@@ -10,7 +10,7 @@ folders and files on the config folder should be copied into your ~/.config/
 
 
 
-Ensure to make all in scripts as executable atleast in Arch
+Ensure to make all in scripts as executable.
 
 known issues:
 
