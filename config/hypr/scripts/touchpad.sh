@@ -1,14 +1,35 @@
-#!/bin/bash
+#!/bin/sh
 
-declare -i ID
-ID=`xinput list | grep -Eio 'touchpad\s*id\=[0-9]{1,2}' | grep -Eo '[0-9]{1,2}'`
-declare -i STATE
-STATE=`xinput list-props $ID|grep 'Device Enabled'|awk '{print $4}'`
-if [ $STATE -eq 1 ]
-then
-    xinput disable $ID
-    notify-send 'Touchpad DISABLED'
+HYPRLAND_DEVICE="asue1209:00-04f3:319f-touchpad"
+
+if [ -z "$XDG_RUNTIME_DIR" ]; then
+  export XDG_RUNTIME_DIR=/run/user/$(id -u)
+fi
+
+export STATUS_FILE="$XDG_RUNTIME_DIR/touchpad.status"
+
+enable_touchpad() {
+  printf "true" > "$STATUS_FILE"
+
+  notify-send -u normal "Enabling Touchpad"
+
+  hyprctl keyword "device:$HYPRLAND_DEVICE:enabled" true
+}
+
+disable_touchpad() {
+  printf "false" > "$STATUS_FILE"
+
+  notify-send -u normal "Disabling Touchpad"
+
+  hyprctl keyword "device:$HYPRLAND_DEVICE:enabled" false
+}
+
+if ! [ -f "$STATUS_FILE" ]; then
+  enable_touchpad
 else
-    xinput enable $ID
-    notify-send 'Touchpad ENABLED'
+  if [ $(cat "$STATUS_FILE") = "true" ]; then
+    disable_touchpad
+  elif [ $(cat "$STATUS_FILE") = "false" ]; then
+    enable_touchpad
+  fi
 fi
