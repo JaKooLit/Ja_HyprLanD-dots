@@ -26,11 +26,9 @@
 `swaybg` `swayidle` `swaylock-effects` `wlroots` `wl-clipboard` `mako` `grim` `slurp` `brightnessctl`  `mpv` `viewnior`  `polkit-gnome` `xorg-xwayland`
 
 
-## Nedded packages: 
+## Notes: 
 
 Those configs are used in my Laptop and Desktop. 
-
-notes:
 
 a.) if you want in Arch, make sure to comment / uncomment some items in /hypr/configs/exec.conf - location of polkit is different than gentoo
 
