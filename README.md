@@ -22,7 +22,9 @@
 
 ## Nedded packages:
 
-(all of the above components) plus `swaybg` `swayidle` `swaylock-effects` `wlroots` `wl-clipboard` `mako` `grim` `slurp` `brightnessctl`  `mpv` `viewnior`  `polkit-gnome` `xorg-xwayland`
+(all of the above components) plus `swaybg` `swayidle` `swaylock-effects` `wlroots` `wl-clipboard` `mako` `grim` `slurp` `brightnessctl`  `mpv` `viewnior`  `polkit-gnome``wlogout`
+
+`xorg-xwayland` - needed to run some non-wayland app
 
 ## Notes: 
 
