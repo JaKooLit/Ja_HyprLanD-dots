@@ -12,7 +12,7 @@
 - Shell: [`Zshell`](https://www.zsh.org/)
 - Status bar: [`Waybar`](https://github.com/Alexays/Waybar)
 - Menu : [`Wofi`](https://hg.sr.ht/~scoopta/wofi)
-- FIle Manager: ['Thunar'](https://docs.xfce.org/xfce/thunar/start)
+- FIle Manager: [`Thunar`](https://docs.xfce.org/xfce/thunar/start)
 
 ## Miscellaneous:
 
