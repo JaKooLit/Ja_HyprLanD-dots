@@ -27,6 +27,7 @@
 ## Notes: 
 
 Those configs are used in my Laptop and Desktop. 
+
 a.) Copy / Move files / folders in your ~.config
 
 b.) Put wallpapers in your ~Pictures/
