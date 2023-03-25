@@ -8,6 +8,7 @@
 
 ## Components:
 
+- Main Component:[`hyprland`](https://github.com/hyprwm/Hyprland)
 - Terminal: [`Foot`](https://github.com/r-c-f/foot)
 - Shell: [`Zshell`](https://www.zsh.org/)
 - Status bar: [`Waybar`](https://github.com/Alexays/Waybar)
@@ -21,8 +22,7 @@
 
 ## Nedded packages:
 
-(all of the above components) plus [`hyprland`](https://github.com/hyprwm/Hyprland) duh! `swaybg` `swayidle` `swaylock-effects` `wlroots` `wl-clipboard` `mako` `grim` `slurp` `brightnessctl`  `mpv` `viewnior`  `polkit-gnome` `xorg-xwayland`
-
+(all of the above components) plus `swaybg` `swayidle` `swaylock-effects` `wlroots` `wl-clipboard` `mako` `grim` `slurp` `brightnessctl`  `mpv` `viewnior`  `polkit-gnome` `xorg-xwayland`
 
 ## Notes: 
 
