@@ -21,9 +21,7 @@
 
 ## Nedded packages:
 
-(all of the above components) plus [`hyprland`](https://github.com/hyprwm/Hyprland) duh!
-
-`swaybg` `swayidle` `swaylock-effects` `wlroots` `wl-clipboard` `mako` `grim` `slurp` `brightnessctl`  `mpv` `viewnior`  `polkit-gnome` `xorg-xwayland`
+(all of the above components) plus [`hyprland`](https://github.com/hyprwm/Hyprland) duh! `swaybg` `swayidle` `swaylock-effects` `wlroots` `wl-clipboard` `mako` `grim` `slurp` `brightnessctl`  `mpv` `viewnior`  `polkit-gnome` `xorg-xwayland`
 
 
 ## Notes: 
