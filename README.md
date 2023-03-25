@@ -27,7 +27,10 @@
 ## Notes: 
 
 Those configs are used in my Laptop and Desktop. 
+a.) Copy / Move files / folders in your ~.config
 
-a.) if you want in Arch, make sure to comment / uncomment some items in /hypr/configs/exec.conf - location of polkit is different than gentoo
+b.) Put wallpapers in your ~Pictures/
 
-b.) Gento waybar needed different package. Official repo is unclickable
+c.) if you want in Arch, make sure to comment / uncomment some items in /hypr/configs/exec.conf - location of polkit is different than gentoo
+
+d.) Gento waybar needed different package. Official repo is unclickable
