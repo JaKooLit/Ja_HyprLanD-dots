@@ -61,3 +61,5 @@ b.) Put wallpapers in your ~Pictures/
 c.) if you want in Arch, make sure to comment / uncomment some items in /hypr/configs/exec.conf - location of polkit is different than gentoo
 
 d.) Gento waybar needed different package. Official repo is unclickable
+
+e.) If you use thunar as file manager, suggested additions for thunar (thunar-volman, gvfs, gvfs-mtp (for accessing phone). Thunar archive plugin-ins) See Arch wiki. These includes thumbnails. Only if desired. https://wiki.archlinux.org/title/thunar
