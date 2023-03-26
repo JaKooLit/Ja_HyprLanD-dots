@@ -28,7 +28,7 @@
     "format-alt-click": "click-right",
     "interval": 3600,
     "return-type": "json",
-    "exec": "~/.config/hypr/waybar/scripts/weather.sh",
+    "exec": "~/.config/hypr/scripts/weather.sh",
     "exec-if": "ping wttr.in -c1"
 },
  "wlr/workspaces": {
@@ -137,13 +137,6 @@
     "return-type": "json",
     "exec": "~/.config/hypr/scripts/weather.sh",
     "exec-if": "ping wttr.in -c1"
-},
-  "custom/updater":{
-    "format": " {}",
-    "exec": "checkupdates | wc -l",
-    "exec-if": "[[ $(checkupdates | wc -l) ]]",
-    "interval": 15,
-    "on-click": "kitty --class update -T update -o font_size=13 -e paru -Syu && notify-send 'The system has been updated' "
 },
   "custom/cycle_wall":{
     "format":"",
