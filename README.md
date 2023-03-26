@@ -52,6 +52,8 @@
 
 `xorg-xwayland` - needed to run some non-wayland app
 
+`fonts` - required awesome fonts. AUR and official repo have... else most of the waybar modules wont work
+
 ## Gentoo Specific:
 
 1. [`hyprland`](https://gpo.zugaina.org/gui-wm/hyprland) have 3 overlays. I am using wayland-desktop overlay. Nvidia and openrc users, you should look into thegreatmcpain overlay. Or of course you can compile hyprland from source
