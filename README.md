@@ -6,6 +6,8 @@
 
 <img src="https://github.com/JaKooLit/Asus-G15-2021-hyprland-dots/blob/main/preview.png" alt="">
 
+<img src="https://github.com/JaKooLit/ASUS_G15-2021_hyprland-dots/blob/main/Gentoo.png" alt="">
+
 ## Components:
 
 - Main Component:[`hyprland`](https://github.com/hyprwm/Hyprland)
