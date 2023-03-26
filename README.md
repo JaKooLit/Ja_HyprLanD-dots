@@ -40,7 +40,7 @@
 
 `brightnessctl`  - for monitor and keyboard brightness - not needed for desktop
 
-`mpv` 
+`mpv` - for wofi beats to work
 
 `viewnior` or sway-img if you prefer  
 
