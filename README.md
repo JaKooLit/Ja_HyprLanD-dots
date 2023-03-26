@@ -65,3 +65,7 @@ c.) if you want in Arch, make sure to comment / uncomment some items in /hypr/co
 d.) Gento waybar needed different package. Official repo waybar have unclickable workspaces
 
 e.) If you use thunar as file manager, suggested additions for thunar (thunar-volman, gvfs, gvfs-mtp (for accessing phone). Thunar archive plugin-ins) See Arch wiki. These includes thumbnails. Only if desired. https://wiki.archlinux.org/title/thunar
+
+f.) make sure scripts located at /hypr/scripts/ are executable as required. (use chmod +x or right click, properties, change permission to be executable)
+
+g.) Inspect /hypr/configs/exec.conf Choose xdg-desktop-portal to use. (Gentoo have different location of executables. Arch /usr/lib vs Gentoo /usr/libexec
