@@ -1,5 +1,7 @@
 #!/bin/sh
 
+## if external mouse connected, touchpad automatically disabled
+
 HYPRLAND_DEVICE="asue1209:00-04f3:319f-touchpad"
 
 if [ -z "$XDG_RUNTIME_DIR" ]; then
