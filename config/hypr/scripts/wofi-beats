@@ -65,7 +65,7 @@ main() {
       ;;
     7)
       notification ;
-      mpv --shuffle  --vid=no "https://www.youtube.com/watch?v=cRWUzbM2uLU&list=PLDtGd5Fw5_Gia0YBU7m0EOfqjNDBztHmo"
+      mpv --shuffle  --vid=no "https://youtube.com/playlist?list=PLDtGd5Fw5_Gia0YBU7m0EOfqjNDBztHmo"
       return
       ;;
     8)
