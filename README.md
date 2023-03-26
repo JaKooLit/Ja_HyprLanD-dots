@@ -22,7 +22,31 @@
 
 ## Needed packages:
 
-(all of the above components) plus `swaybg` `swayidle` `swaylock-effects` `wlroots` `wl-clipboard` `mako` `grim` `slurp` `brightnessctl`  `mpv` `viewnior`  `polkit-gnome``wlogout`
+(all of the above components) plus
+
+`swaybg` - for wallpaper
+
+`swayidle` - not necessary but you can install
+
+`swaylock-effects` - or swaylock
+
+`wlroots`  
+
+`mako` - for notifications
+
+`grim` `slurp` `wl-clipboard` - for screenshot
+
+`brightnessctl`  - for monitor and keyboard brightness - not needed for desktop
+
+`mpv` 
+
+`viewnior` or sway-img if you prefer  
+
+`polkit-gnome` 
+
+`wlogout` 
+
+`pamixer` - for volume control notification. 
 
 `xorg-xwayland` - needed to run some non-wayland app
 
