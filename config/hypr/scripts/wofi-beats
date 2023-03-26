@@ -26,7 +26,7 @@ menu(){
   printf "5. SmoothChill\n"
   printf "6. Relaxing Music\n"
   printf "7. K-Drama-OST\n"
-  printf "8. Lofi Zone"
+  printf "8. K-Drama-OST2"
 }
 
 main() {
@@ -70,7 +70,7 @@ main() {
       ;;
     8)
       notification ;
-      mpv --shuffle  --vid=no "https://www.youtube.com/watch?v=GaW13eDQO6s"
+      mpv --shuffle  --vid=no "https://youtube.com/playlist?list=PLUge_o9AIFp4HuA-A3e3ZqENh63LuRRlQ"
       return
       ;;
   esac
