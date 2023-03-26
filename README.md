@@ -70,7 +70,7 @@ b.) Put wallpapers in your ~Pictures/
 
 c.) if you want in Arch, make sure to comment / uncomment some items in /hypr/configs/exec.conf - location of polkit is different than gentoo
 
-d.) If you use thunar as file manager, suggested additions for thunar (thunar-volman, gvfs, gvfs-mtp (for accessing phone). Thunar archive plugin-ins) See Arch wiki. These includes thumbnails. Only if desired. https://wiki.archlinux.org/title/thunar
+d.) If you use `thunar` as file manager, suggested additions for thunar (thunar-volman, tumbler, gvfs, gvfs-mtp (for accessing phone), Thunar archive plugin-ins) See Arch wiki https://wiki.archlinux.org/title/thunar
 
 e.) make sure scripts located at /hypr/scripts/ are executable as required. (use chmod +x or right click, properties, change permission to be executable)
 
