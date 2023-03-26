@@ -19,9 +19,3 @@ ${SCRIPTSDIR}/notifications &
 # Lauch statusbar (waybar)
 ${SCRIPTSDIR}/statusbar &
 
-#insync start &
-#dropbox &
-#telegram-desktop &
-#discord &
-#nm-applet-indicator
-#variety &
