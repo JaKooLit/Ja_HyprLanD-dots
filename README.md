@@ -1,7 +1,7 @@
 # Hyprland-dotfiles
 
 <br>
-<h3 align = "center">My Asus G15 Gentoo / Arch Hyprland Dotfiles</h3>
+<h3 align = "center">Gentoo / Arch Hyprland Dotfiles</h3>
 <br>
 
 <img src="https://github.com/JaKooLit/Asus-G15-2021-hyprland-dots/blob/main/preview.png" alt="">
