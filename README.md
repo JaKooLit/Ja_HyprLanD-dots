@@ -1,4 +1,4 @@
-# Hyprland-dotfiles
+### Hyprland-dotfiles ###
 
 <br>
 <h3 align = "center">Gentoo / Arch Hyprland Dotfiles</h3>
