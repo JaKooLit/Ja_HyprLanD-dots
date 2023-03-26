@@ -52,7 +52,7 @@
 
 `xorg-xwayland` - needed to run some non-wayland app
 
-`fonts` - required awesome fonts. AUR and official repo have... else most of the waybar modules wont work. Most of configs here I used Fantasque Sans Mono
+`fonts` - required awesome fonts. AUR and official repo have... else most of the waybar modules wont work. Most of configs here I used Fantasque Sans Mono. I used Cascadia Code Semibold Italic on foot.
 
 ## Gentoo Specific:
 
