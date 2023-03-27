@@ -1,4 +1,6 @@
-### Hyprland-dotfiles ###
+
+https://user-images.githubusercontent.com/85185940/227948968-03e5097d-9850-437f-8109-8d376bf81e9f.mp4
+
 
 <br>
 <h3 align = "center">Gentoo / Arch Hyprland Dotfiles</h3>
