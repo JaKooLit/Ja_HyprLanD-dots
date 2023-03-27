@@ -58,7 +58,7 @@ https://user-images.githubusercontent.com/85185940/227948968-03e5097d-9850-437f-
 
 ## Gentoo Specific:
 
-1. [`hyprland`](https://gpo.zugaina.org/gui-wm/hyprland) have 3 overlays. I am using wayland-desktop overlay. Nvidia and openrc users, you should look into thegreatmcpain overlay. Or of course you can compile hyprland from source
+1. [`Hyprland - Link to zugaina`](https://gpo.zugaina.org/gui-wm/hyprland) have 3 overlays. I am using wayland-desktop overlay. Nvidia and openrc users, you should look into thegreatmcpain overlay. Or of course you can compile hyprland from source
 2. Waybar - from Gentoo repo's waybar, I experienced unclickable workspaces. I have installed from useless-overlay. Click [`here`](https://github.com/JaKooLit/Ja_HyprLanD-dots/blob/main/misc/Gentoo-Waybar) for guidance
 3. For screen sharing, I use xdg-desktop-portal-wlr which seems to work. If you are having issues, install xdg-desktop-portal-hyprland
 4. if you use openrc, ensure to launch hyprland with dbus-run-session Hyprland. Omitting the dbus-run-session may cause [`runtime errors`](https://wiki.gentoo.org/wiki/Sway#Failed_to_connect_to_user_bus)
@@ -68,9 +68,9 @@ https://user-images.githubusercontent.com/85185940/227948968-03e5097d-9850-437f-
 
 These configs are used in my Laptop and Desktop. 
 
-a.) Copy / Move files / folders in your ~.config
+a.) Copy / Move files / folders in your ~/.config
 
-b.) Put wallpapers in your ~Pictures/
+b.) Put wallpapers in your ~/Pictures/
 
 c.) if you want in Arch, make sure to comment / uncomment some items in /hypr/configs/exec.conf - location of polkit is different than gentoo
 
