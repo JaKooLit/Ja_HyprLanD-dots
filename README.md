@@ -12,7 +12,7 @@ https://user-images.githubusercontent.com/85185940/227948968-03e5097d-9850-437f-
 
 ## Components:
 
-- Main Component:[`hyprland`](https://github.com/hyprwm/Hyprland)
+- Main Component:[`Hyprland`](https://github.com/hyprwm/Hyprland)
 - Terminal: [`Foot`](https://github.com/r-c-f/foot)
 - Shell: [`Zshell`](https://www.zsh.org/)
 - Status bar: [`Waybar`](https://github.com/Alexays/Waybar)
