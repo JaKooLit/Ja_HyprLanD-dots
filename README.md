@@ -65,7 +65,7 @@ https://user-images.githubusercontent.com/85185940/227948968-03e5097d-9850-437f-
 
 
 ## Notes: 
-# you can copy, create, change, however, would appreciate if you have have a better solution / changes so we will all improve :)
+### you can copy, create, change, however, would appreciate if you have have a better solution / changes so we will all improve :)
 
 These configs are used in my Laptop and Desktop. 
 
