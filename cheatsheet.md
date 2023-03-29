@@ -4,12 +4,18 @@
 
 # common operations
   Super  Return         *term* (`foot`)
+  
   Super  q                  *quit* (kill focused window)
+  
   Super   Shift  q        *quit* (kill focused window)
+  
   Super          d           *show app menu* (`wofi small`)
+  
   Super   Shift  d        *show app menu* (`wofi large`)
+  
   Super   Shift  c        *reload config files* (`hyprland reload`)
-  Super Ctrl Escape   *exit Hyprland
+  
+  Super Ctrl Shift E     *exit Hyprland
 
 # screenshot (on desktop with printscreen key)
   PrintSrc                *full screenshot*
