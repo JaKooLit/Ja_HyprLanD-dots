@@ -3,7 +3,7 @@
 iDIR="$HOME/.config/hypr/mako/icons"
 
 time=$(date +%Y-%m-%d-%H-%M-%S)
-dir="$(xdg-user-dir PICTURES)/Screenshots"
+dir=~/Pictures/Screenshots
 file="Screenshot_${time}_${RANDOM}.png"
 
 # notify and view screenshot
