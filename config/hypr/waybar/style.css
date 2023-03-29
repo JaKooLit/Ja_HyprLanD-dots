@@ -5,31 +5,6 @@
 @define-color bgcolor #222436;  /* background color */
 @define-color alert   #df3320;
 
-/* ROSE PINE */
-@define-color accent1 #eb6f92;
-@define-color accent2 #9ccfd8;
-@define-color accent3 #f6c177;
-@define-color accent4 #31748f;
-@define-color accent5 #c4a7e7;
-@define-color accent6 #ebbcba;
-
-/* DRACULA */
-@define-color accent1 #ff5555;
-@define-color accent2 #50fa7b;
-@define-color accent3 #f1fa8c;
-@define-color accent4 #bd93f9;
-@define-color accent5 #ff79c6;
-@define-color accent6 #8be9fd;
-
-/* MONOKAI PRO */
-@define-color accent1 #ff6188;
-@define-color accent2 #a9dc76;
-@define-color accent3 #ffd866;
-@define-color accent4 #fc9867;
-@define-color accent5 #ab9df2;
-@define-color accent6 #78dce8;
-
-/* TOKYO NIGHT */
 @define-color accent1 #ff7a93;
 @define-color accent2 #b9f27c;
 @define-color accent3 #ff9e64;
@@ -39,24 +14,24 @@
 
 * {
     border: none;
-    border-radius: 10px;
+    border-radius: 6px;
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: "JetBrainsMono Bold", "Roboto Mono Medium", Helvetica, Arial, sans-serif;
+    font-family: "FantasqueSansMono", fontawesome, "Font Awesome 5 Free";
     /* Recommended font sizes: 720p: ~14px, 1080p: ~18px */
-    font-size: 14px;
+    font-size: 22px;
     min-height: 0;
 }
 
 /* icons start at U+E900 in Jetbrains mono in gucharmap */
 
 window#waybar {
-    background-color: rgba(50, 50, 50, 0.1);
+    background-color: rgba(50, 50, 50, 0.2);
     /*background-color: @bgcolor;*/
     /* border-bottom: 0px solid rgba(100, 114, 125, 0.5); */
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
-    border-radius: 10px;
+    border-radius: 0;
 }
 
 window#waybar.hidden {
@@ -221,17 +196,13 @@ label:focus {
     color: @accent4;
 }
 
-#pulseaudio.muted {
-    color: #a0a0a0;
-}
-#wireplumber {
-    color: @accent4;
+#pulseaudio-muted {
+    color: @accent2;
 }
 
-#wireplumber.muted {
+#pluseaudio-source-muted{
     color: #a0a0a0;
 }
-
 
 #custom-power {
     color: @accent6;
@@ -240,11 +211,9 @@ label:focus {
 #custom-waylandvsxorg {
     color: @accent5;
 }
-
-#custom-pacman {
-    color: @accent2;
+#custom-power_profile {
+     color: @accent3;
 }
-
 #custom-media {
     background-color: #66cc99;
     color: #2a5c45;
@@ -279,6 +248,7 @@ label:focus {
 #idle_inhibitor.activated {
     /*background-color: #ecf0f1;*/
     color: #2dcc36;
+    /*color: #2d3436;*/
 }
 
 #mpd {
