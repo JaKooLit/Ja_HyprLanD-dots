@@ -94,11 +94,11 @@ fi
 read -n1 -rep 'Would you like to copy config and wallpaper files? (y,n)' CFG
 if [[ $CFG == "Y" || $CFG == "y" ]]; then
     echo -e "Copying config files...\n"
-    cp -R config/hypr ~/.config/
-    cp -R config/foot ~/.config/
-    cp -R config/swaylock ~/.config/
-    cp -R config/wlogout ~/.config/
-    cp -R wallpapers ~/Pictures/
+    cp -r config/hypr ~/.config/
+    cp -r config/foot ~/.config/
+    cp -r config/swaylock ~/.config/
+    cp -r config/wlogout ~/.config/
+    cp -r wallpapers ~/Pictures/
     
     # Set some files as exacutable 
     chmod +x ~/.config/hypr/scripts/airplane-mode.sh
