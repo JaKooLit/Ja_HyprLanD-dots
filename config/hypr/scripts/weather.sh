@@ -39,22 +39,22 @@ case $(echo ${weather[1]##*,} | tr '[:upper:]' '[:lower:]') in
     condition=""
     ;;
 "partly cloudy")
-    condition="⛅️"
+    condition="杖"
     ;;
 "cloudy")
     condition=""
     ;;
 "overcast")
-    condition=""
+    condition=""
     ;;
 "mist" | "fog" | "freezing fog")
     condition=""
     ;;
 "patchy rain possible" | "patchy light drizzle" | "light drizzle" | "patchy light rain" | "light rain" | "light rain shower" | "rain")
-    condition=""
+    condition="⛈️"
     ;;
 "moderate rain at times" | "moderate rain" | "heavy rain at times" | "heavy rain" | "moderate or heavy rain shower" | "torrential rain shower" | "rain shower")
-    condition=""
+    condition="🌨️"
     ;;
 "patchy snow possible" | "patchy sleet possible" | "patchy freezing drizzle possible" | "freezing drizzle" | "heavy freezing drizzle" | "light freezing rain" | "moderate or heavy freezing rain" | "light sleet" | "ice pellets" | "light sleet showers" | "moderate or heavy sleet showers")
     condition="ﭽ"
