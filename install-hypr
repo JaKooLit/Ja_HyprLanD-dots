@@ -82,7 +82,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     
     # Clean out other portals
     echo -e "Cleaning out conflicting xdg portals...\n"
-    yay -R --noconfirm xdg-desktop-portal-gnome xdg-desktop-portal-gtk xdg-desktop-portal-kde
+    yay -R --noconfirm xdg-desktop-portal-gnome xdg-desktop-portal-gtk xdg-desktop-portal-kde xdg-desktop-portal-wlr xdg-desktop-portal-lxqt
 fi
 
 ### Copy Config Files ###
