@@ -124,8 +124,8 @@ if [[ $ROG == "Y" || $ROG == "y" ]]; then
 fi
 
 ### Script is done ###
-echo -e "Script had completed.\n"
-echo -e "You can start Hyprland by typing Hyprland (note the capital H).\n"
+echo -e "Installation Completed.\n"
+echo -e "You can start Hyprland by typing Hyprland (note the capital H) However, it is highly recommended to reboot your computer first.\n"
 read -n1 -rep 'Would you like to start Hyprland now? (y,n)' HYP
 if [[ $HYP == "Y" || $HYP == "y" ]]; then
     exec Hyprland
