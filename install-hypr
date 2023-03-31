@@ -19,6 +19,7 @@
 # wlogout: This is a logout menu that allows for shutdown, reboot and sleep
 # mako: This is a graphical notification daemon
 # thunar with necessary plugins: This is a graphical file manager
+# ttf-nerd-fonts-symbols-1000-em : some nerd fonts needed for proper icons in waybar
 # ttf-nerd-fonts-symbols-common: Some nerd fonts for icons and overall look
 # otf-font-awesome-5 # necessary for symbols / weather
 # ttf-droid - suggested for international fonts to display properly
@@ -70,8 +71,8 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     yay -S --noconfirm dracula-icons-git 
     
     yay -S --noconfirm foot swaybg swaylock-effects wofi wlogout mako thunar gvfs thunar-volman tumbler \
-    ffmpegthumbs ttf-nerd-fonts-symbols-common otf-font-awesome-5 dracula-gtk-theme \
-    polkit-gnome python-requests grim slurp pamixer brightnessctl viewnior \
+    ffmpegthumbs ttf-nerd-fonts-symbols-common ttf-nerd-fonts-symbols-1000-em otf-font-awesome-5 \
+    polkit-gnome python-requests grim slurp pamixer brightnessctl viewnior dracula-gtk-theme \
     bluez bluez-utils blueman lxappearance bibata-cursor-theme-bin mpv \
       
 
