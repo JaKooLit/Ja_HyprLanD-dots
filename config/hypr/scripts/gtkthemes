@@ -2,9 +2,9 @@
 
 ## Set GTK Themes, Icons, Cursor and Fonts
 
-THEME='Nordic'
-ICONS='Shiny-Dark-Icons'
-FONT='Cascadia Code Mono 14'
+THEME='Dracula'
+ICONS='Dracula'
+FONT='Fantasque Sans Mono 17'
 CURSOR='Bibata-Modern-Ice'
 
 SCHEMA='gsettings set org.gnome.desktop.interface'
