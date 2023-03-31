@@ -64,7 +64,7 @@ fi
 ### Install all of the above pacakges ####
 read -n1 -rep 'Would you like to install the packages? (y,n)' INST
 if [[ $INST == "Y" || $INST == "y" ]]; then
-    yay -S --noconfirm hyprland-nvidia-hidpi-git foot waybar-hyprland-git \
+    yay -S --noconfirm hyprland-nvidia-git foot waybar-hyprland-git \
     swaybg swaylock-effects wofi wlogout mako thunar gvfs thunar-volman tumbler\
     ffmpegthumbnailers ttf-nerd-fonts-symbols-common otf-font-awesome-5 \
     polkit-gnome python-requests grim slurp pamixer brightnessctl viewnior \
