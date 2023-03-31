@@ -66,8 +66,8 @@ read -n1 -rep 'Would you like to install the packages? (y,n)' INST
 if [[ $INST == "Y" || $INST == "y" ]]; then
     yay -S --noconfirm hyprland-nvidia-git 
     yay -S --noconfirm waybar-hyprland-git 
-    yay -S --noconfim xdg-desktop-portal-hyprland-git 
-    yay -S --noconfim dracula-icons-git 
+    yay -S --noconfirm xdg-desktop-portal-hyprland-git 
+    yay -S --noconfirm dracula-icons-git 
     
     yay -S --noconfim foot swaybg swaylock-effects wofi wlogout mako thunar gvfs thunar-volman tumbler \
     ffmpegthumbnailers ttf-nerd-fonts-symbols-common otf-font-awesome-5 dracula-gtk-theme \
