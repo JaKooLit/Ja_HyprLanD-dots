@@ -70,7 +70,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     yay -S --noconfirm dracula-icons-git 
     
     yay -S --noconfirm foot swaybg swaylock-effects wofi wlogout mako thunar gvfs thunar-volman tumbler \
-    ffmpegthumbnailers ttf-nerd-fonts-symbols-common otf-font-awesome-5 dracula-gtk-theme \
+    ffmpegthumbs ttf-nerd-fonts-symbols-common otf-font-awesome-5 dracula-gtk-theme \
     polkit-gnome python-requests grim slurp pamixer brightnessctl viewnior \
     bluez bluez-utils blueman lxappearance bibata-cursor-theme-bin mpv \
       
