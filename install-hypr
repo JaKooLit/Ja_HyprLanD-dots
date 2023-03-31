@@ -83,7 +83,11 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     
     # Clean out other portals
     echo -e "Cleaning out conflicting xdg portals...\n"
-    yay -R --noconfirm xdg-desktop-portal-gnome xdg-desktop-portal-gtk xdg-desktop-portal-kde xdg-desktop-portal-wlr xdg-desktop-portal-lxqt
+    sudo pacman -R --noconfirm xdg-desktop-portal-gnome 
+    sudo pacman -R --noconfirm xdg-desktop-portal-gtk 
+    sudo pacman -R --noconfirm xdg-desktop-portal-kde 
+    sudo pacman -R --noconfirm xdg-desktop-portal-wlr 
+    sudo pacman -R --noconfirm xdg-desktop-portal-lxqt
 fi
 
 ### Copy Config Files ###
@@ -129,7 +133,7 @@ fi
 
 ### Script is done ###
 echo -e "Installation Completed.\n"
-echo -e "You can start Hyprland by typing Hyprland (note the capital H) However, it is highly recommended to reboot your computer first.\n"
+echo -e "You can start Hyprland by typing Hyprland (note the capital H) NOTE! it is highly recommended to reboot your computer first.\n"
 read -n1 -rep 'Would you like to start Hyprland now? (y,n)' HYP
 if [[ $HYP == "Y" || $HYP == "y" ]]; then
     exec Hyprland
