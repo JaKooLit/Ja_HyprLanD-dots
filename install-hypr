@@ -73,7 +73,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     yay -S --noconfirm foot swaybg swaylock-effects wofi wlogout mako thunar gvfs thunar-volman tumbler \
     ffmpegthumbs ttf-nerd-fonts-symbols-common ttf-nerd-fonts-symbols-1000-em otf-font-awesome-5 \
     polkit-gnome python-requests grim slurp pamixer brightnessctl viewnior dracula-gtk-theme \
-    bluez bluez-utils blueman lxappearance bibata-cursor-theme-bin mpv \
+    bluez bluez-utils blueman lxappearance bibata-cursor-theme-bin mousepad mpv \
       
 
     # Start the bluetooth service
