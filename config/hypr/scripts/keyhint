@@ -1,2 +1,2 @@
 #!/bin/sh
-kitty -e micro ~/.config/hypr/cheatsheet.md
+foot -e nano ~/.config/hypr/cheatsheet.md
