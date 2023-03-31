@@ -64,12 +64,13 @@ fi
 ### Install all of the above pacakges ####
 read -n1 -rep 'Would you like to install the packages? (y,n)' INST
 if [[ $INST == "Y" || $INST == "y" ]]; then
-    yay -S --noconfirm hyprland-nvidia-git foot waybar-hyprland-git \
-    swaybg swaylock-effects wofi wlogout mako thunar gvfs thunar-volman tumbler\
-    ffmpegthumbnailers ttf-nerd-fonts-symbols-common otf-font-awesome-5 \
+    yay -S --noconfirm hyprland-nvidia-git waybar-hyprland-git xdg-desktop-portal-hyprland-git dracula-icons-git \
+    
+    yay -S --noconfim foot swaybg swaylock-effects wofi wlogout mako thunar gvfs thunar-volman tumbler \
+    ffmpegthumbnailers ttf-nerd-fonts-symbols-common otf-font-awesome-5 dracula-gtk-theme \
     polkit-gnome python-requests grim slurp pamixer brightnessctl viewnior \
     bluez bluez-utils blueman lxappearance bibata-cursor-theme-bin mpv \
-    dracula-gtk-theme dracula-icons-git xdg-desktop-portal-hyprland-git
+      
 
     # Start the bluetooth service
     echo -e "Starting the Bluetooth Service...\n"
