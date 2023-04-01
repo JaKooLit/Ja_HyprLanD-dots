@@ -1,0 +1,5 @@
+#!/bin/bash
+
+git clone https://github.com/Frogging-Family/nvidia-all.git
+cd nvidia-all
+makepkg -si
