@@ -11,7 +11,7 @@
 # Below is a list of the packages that would be installed
 #
 # hyprland-nvidia-hidpi-git: This is the Hyprland compositor
-# kitty: This is the default terminal
+# foot: This is the default terminal
 # waybar-hyprland: This is a fork of waybar with Hyprland workspace support
 # swaybg: This is used to set a desktop background image
 # swaylock-effects: This allows for the locking of the desktop its a fork that adds some editional visual effects
@@ -19,9 +19,8 @@
 # wlogout: This is a logout menu that allows for shutdown, reboot and sleep
 # mako: This is a graphical notification daemon
 # thunar with necessary plugins: This is a graphical file manager
-# ttf-nerd-fonts-symbols-1000-em : some nerd fonts needed for proper icons in waybar
-# ttf-nerd-fonts-symbols-common: Some nerd fonts for icons and overall look
-# otf-font-awesome-5 # necessary for symbols / weather
+# ttf-jetbrains-mono-nerd : some nerd fonts needed for proper icons in waybar
+# otf-font-awesome-4 and otf-font-awesome # necessary for symbols / weather
 # ttf-droid - suggested for international fonts to display properly
 # polkit-gnome: needed to get superuser access on some graphical appliaction
 # python-requests: needed for the weather module script to execute
@@ -73,9 +72,9 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     yay -S --noconfirm dracula-icons-git 
     
     yay -S --noconfirm foot swaybg swaylock-effects wofi wlogout mako thunar gvfs thunar-volman tumbler \
-    ffmpegthumbs ttf-nerd-fonts-symbols-common ttf-nerd-fonts-symbols-1000-em otf-font-awesome-5 \
+    ffmpegthumbs otf-font-awesome ttf-jetbrains-mono-nerd otf-font-awesome-4 qt5ct \
     polkit-gnome python-requests grim slurp pamixer brightnessctl viewnior pavucontrol dracula-gtk-theme \
-    bluez bluez-utils blueman lxappearance bibata-cursor-theme-bin mousepad mpv network-manager-applet qt5ct \
+    bluez bluez-utils blueman lxappearance bibata-cursor-theme-bin mousepad mpv network-manager-applet \
       
 
     # Start the bluetooth service
