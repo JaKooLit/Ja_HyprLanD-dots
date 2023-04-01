@@ -39,6 +39,8 @@
 # bibata-cursor-theme-bin - cursor theme
 # xdg-desktop-portal-hyprland-git: xdg-desktop-portal backend for hyprland
 # mpv: for wofi-beats to work
+# qt5ct: for visual settings for qt-apps
+# mousepad: simple text editor
 
 #### Check for yay ####
 ISYAY=/sbin/yay
@@ -73,7 +75,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     yay -S --noconfirm foot swaybg swaylock-effects wofi wlogout mako thunar gvfs thunar-volman tumbler \
     ffmpegthumbs ttf-nerd-fonts-symbols-common ttf-nerd-fonts-symbols-1000-em otf-font-awesome-5 \
     polkit-gnome python-requests grim slurp pamixer brightnessctl viewnior dracula-gtk-theme \
-    bluez bluez-utils blueman lxappearance bibata-cursor-theme-bin mousepad mpv \
+    bluez bluez-utils blueman lxappearance bibata-cursor-theme-bin mousepad mpv qt5ct \
       
 
     # Start the bluetooth service
