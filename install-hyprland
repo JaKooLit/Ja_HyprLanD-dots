@@ -1,6 +1,6 @@
 #!/bin/bash
 # The following will be installed to run Hyprland on Asus G15 with RTX GPU
-#  
+# 
 # Below is a list of the packages that would be installed
 # hyprland-nvidia-git: This is the Hyprland compositor
 # foot: This is the default terminal
