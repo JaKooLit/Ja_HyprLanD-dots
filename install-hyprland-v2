@@ -1,0 +1,169 @@
+#!/bin/bash
+
+# The following will be installed to run Hyprland on Asus G15 with RTX GPU
+# 
+# Below is a list of the packages that would be installed
+#
+# hyprland-nvidia-git: This is the Hyprland compositor
+# foot: This is the default terminal
+# waybar-hyprland: This is a fork of waybar with Hyprland workspace support
+# swaybg: This is used to set a desktop background image
+# swaylock-effects: This allows for the locking of the desktop its a fork that adds some editional visual effects
+# wofi: This is an application launcher menu
+# wlogout: This is a logout menu that allows for shutdown, reboot and sleep
+# mako: This is a graphical notification daemon
+# thunar with necessary plugins: This is a graphical file manager
+# ttf-jetbrains-mono-nerd : some nerd fonts needed for proper icons in waybar
+# otf-font-awesome-4 and otf-font-awesome # necessary for symbols / weather
+# ttf-droid - suggested for international fonts to display properly
+# polkit-gnome: needed to get superuser access on some graphical appliaction
+# python-requests: needed for the weather module script to execute
+# grim: This is a screenshot tool it grabs images from a Wayland compositor
+# slurp: This helps with screenshots, it selects a region in a Wayland compositor
+# viewnior: for photo viewing
+# pamixer: This helps with audio settings such as volume
+# brightnessctl: used to control monitor bright level
+# bluez: the bluetooth service
+# bluez-utils: command line utilities to interact with bluetooth devices
+# blueman - Bluetooth manager
+# lxappearance: used to set GTK theme
+# dracula-gtk-theme: the Dracula theme, it fits the overall look and feel
+# dracula-icons-git" set of icons to go with the Dracula theme
+# bibata-cursor-theme-bin - cursor theme
+# xdg-desktop-portal-hyprland-git: xdg-desktop-portal backend for hyprland
+# mpv: for wofi-beats to work
+# qt5ct: for visual settings for qt-apps
+# mousepad: simple text editor
+
+# Check if yay is installed
+ISYAY=/sbin/yay
+if [ -f "$ISYAY" ]; then 
+    echo "yay was located, updating system packages..."
+    yay -Syu || { echo "Error: failed to update system packages using yay. Exiting script."; exit 1; }
+else 
+    echo "Error: yay was not located, please install yay first. Exiting script."
+    exit 1
+fi
+
+
+# Prompt user to install packages
+# Function to check if a command executed successfully
+function check_command_status {
+    if [ $? -ne 0 ]; then
+        echo -e "\nError executing command: $1"
+        exit 1
+    fi
+}
+
+read -n1 -rep 'Would you like to install the packages? (y/n)' INST
+echo
+
+if [[ $INST == "Y" || $INST == "y" ]]; then
+    # Install packages
+    yay -S --noconfirm hyprland-nvidia-git 
+    check_command_status "yay -S hyprland-nvidia-git"
+    
+    yay -S --noconfirm waybar-hyprland-git 
+    check_command_status "yay -S waybar-hyprland-git"
+    
+    yay -S --noconfirm xdg-desktop-portal-hyprland-git 
+    check_command_status "yay -S xdg-desktop-portal-hyprland-git"
+    
+    yay -S --noconfirm dracula-icons-git 
+    check_command_status "yay -S dracula-icons-git"
+    
+    yay -S --noconfirm foot swaybg swaylock-effects wofi wlogout mako thunar gvfs thunar-volman tumbler \
+        ffmpegthumbs otf-font-awesome ttf-jetbrains-mono-nerd otf-font-awesome-4 ttf-fantasque-sans-mono qt5ct wl-clipboard \
+        polkit-gnome python-requests grim slurp pamixer brightnessctl viewnior pavucontrol dracula-gtk-theme \
+        bluez bluez-utils blueman lxappearance bibata-cursor-theme-bin mousepad mpv network-manager-applet 
+    check_command_status "yay -S (packages)"
+    
+    # Start the bluetooth service
+    echo -e "\nStarting the Bluetooth service..."
+    sudo systemctl enable --now bluetooth.service
+    check_command_status "sudo systemctl enable --now bluetooth.service"
+    sleep 2
+    
+    # Clean out other portals
+    echo -e "\nCleaning out conflicting xdg portals..."
+    sudo pacman -R --noconfirm xdg-desktop-portal-gnome 
+    check_command_status "sudo pacman -R --noconfirm xdg-desktop-portal-gnome"
+    
+    sudo pacman -R --noconfirm xdg-desktop-portal-gtk 
+    check_command_status "sudo pacman -R --noconfirm xdg-desktop-portal-gtk"
+    
+    sudo pacman -R --noconfirm xdg-desktop-portal-kde 
+    check_command_status "sudo pacman -R --noconfirm xdg-desktop-portal-kde"
+    
+    sudo pacman -R --noconfirm xdg-desktop-portal-wlr 
+    check_command_status "sudo pacman -R --noconfirm xdg-desktop-portal-wlr"
+    
+    sudo pacman -R --noconfirm xdg-desktop-portal-lxqt
+    check_command_status "sudo pacman -R --noconfirm xdg-desktop-portal-lxqt"
+    
+    echo -e "\nPackages installed successfully."
+fi
+
+### Copy Config Files ###
+set -e # Exit immediately if a command exits with a non-zero status.
+
+read -n1 -rep 'Would you like to copy config and wallpaper files? (y,n)' CFG
+if [[ $CFG == "Y" || $CFG == "y" ]]; then
+    echo -e "Copying config files...\n"
+    mkdir -p ~/.config
+    cp -r config/hypr ~/.config/ || { echo "Error: Failed to copy hypr config files."; exit 1; }
+    cp -r config/foot ~/.config/ || { echo "Error: Failed to copy foot config files."; exit 1; }
+    cp -r config/swaylock ~/.config/ || { echo "Error: Failed to copy swaylock config files."; exit 1; }
+    cp -r config/wlogout ~/.config/ || { echo "Error: Failed to copy wlogout config files."; exit 1; }
+    mkdir -p ~/Pictures
+    cp -r wallpapers ~/Pictures/ || { echo "Error: Failed to copy wallpapers."; exit 1; }
+    
+    # Set some files as executable 
+    chmod +x ~/.config/hypr/scripts/airplane-mode.sh
+    chmod +x ~/.config/hypr/scripts/brightness
+    chmod +x ~/.config/hypr/scripts/changeLayout
+    chmod +x ~/.config/hypr/scripts/changeWallpaper
+    chmod +x ~/.config/hypr/scripts/fullmenu
+    chmod +x ~/.config/hypr/scripts/glassmorphismToggle
+    chmod +x ~/.config/hypr/scripts/gtkthemes
+    chmod +x ~/.config/hypr/scripts/lockscreen
+    chmod +x ~/.config/hypr/scripts/menu
+    chmod +x ~/.config/hypr/scripts/notifications
+    chmod +x ~/.config/hypr/scripts/portal-arch-hyprland
+    chmod +x ~/.config/hypr/scripts/screenshot
+    chmod +x ~/.config/hypr/scripts/startup
+    chmod +x ~/.config/hypr/scripts/statusbar
+    chmod +x ~/.config/hypr/scripts/switch-lid.sh
+    chmod +x ~/.config/hypr/scripts/touchpad.sh
+    chmod +x ~/.config/hypr/scripts/volume
+    chmod +x ~/.config/hypr/scripts/weather.sh
+    chmod +x ~/.config/hypr/scripts/wofi-beats
+fi
+
+
+### Install software for Asus ROG laptops ###
+read -n1 -rep 'Would you like to install Asus ROG software support? (y,n)' ROG
+if [[ $ROG == "Y" || $ROG == "y" ]]; then
+    echo -e "Installing ASUS ROG packages...\n"
+    sudo pacman -Syyu --noconfirm yay # update yay package manager
+    yay -S --noconfirm asusctl supergfxctl rog-control-center
+    echo -e "Activating ROG services...\n"
+    sudo systemctl daemon-reload && sudo systemctl enable --now supergfxd
+    sleep 2
+fi
+
+### Script is done ###
+echo -e "Installation Completed.\n"
+echo -e "You can start Hyprland by typing Hyprland (note the capital H). NOTE! It is highly recommended to reboot your computer first.\n"
+read -n1 -rep 'Would you like to start Hyprland now? (y,n)' HYP
+if [[ $HYP == "Y" || $HYP == "y" ]]; then
+    if command -v Hyprland >/dev/null; then
+        exec Hyprland
+    else
+        echo -e "Hyprland not found. Please make sure it is installed and try again.\n"
+        exit 1
+    fi
+else
+    exit
+fi
+
