@@ -75,6 +75,6 @@ d.) If you use `thunar` as file manager, suggested additions for thunar (thunar-
 
 e.) make sure scripts located at /hypr/scripts/ are executable as required. (use chmod +x or right click, properties, change permission to be executable)
 
-f.) Inspect /hypr/configs/exec.conf Choose xdg-desktop-portal to use. (Gentoo have different location of executables. Arch /usr/lib vs Gentoo /usr/libexec
+f.) Inspect /hypr/configs/exec.conf Choose which polkit gnome to use. to use. (Gentoo have different location of executables. Arch /usr/lib vs Gentoo /usr/libexec
 
 g.) if you have azerty keyboard [`this`](https://github.com/swaywm/sway/issues/1460?fbclid=IwAR1C8VcY_wWbGhXvT-5ApjJCQuJoJzhOVor6o5fdn0Nj1c6bD9JXoQAPQIg) might help
