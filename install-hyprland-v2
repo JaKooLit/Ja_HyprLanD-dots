@@ -87,20 +87,11 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     # Clean out other portals
     echo -e "\nCleaning out conflicting xdg portals..."
     sudo pacman -R --noconfirm xdg-desktop-portal-gnome 
-    check_command_status "sudo pacman -R --noconfirm xdg-desktop-portal-gnome"
-    
-    sudo pacman -R --noconfirm xdg-desktop-portal-gtk 
-    check_command_status "sudo pacman -R --noconfirm xdg-desktop-portal-gtk"
-    
-    sudo pacman -R --noconfirm xdg-desktop-portal-kde 
-    check_command_status "sudo pacman -R --noconfirm xdg-desktop-portal-kde"
-    
-    sudo pacman -R --noconfirm xdg-desktop-portal-wlr 
-    check_command_status "sudo pacman -R --noconfirm xdg-desktop-portal-wlr"
-    
+    sudo pacman -R --noconfirm xdg-desktop-portal-gtk   
+    sudo pacman -R --noconfirm xdg-desktop-portal-kde   
+    sudo pacman -R --noconfirm xdg-desktop-portal-wlr   
     sudo pacman -R --noconfirm xdg-desktop-portal-lxqt
-    check_command_status "sudo pacman -R --noconfirm xdg-desktop-portal-lxqt"
-    
+      
     echo -e "\nPackages installed successfully."
 fi
 
@@ -142,14 +133,18 @@ fi
 
 
 ### Install software for Asus ROG laptops ###
-read -n1 -rep 'Would you like to install Asus ROG software support? (y,n)' ROG
-if [[ $ROG == "Y" || $ROG == "y" ]]; then
-    echo -e "Installing ASUS ROG packages...\n"
-    sudo pacman -Syyu --noconfirm yay # update yay package manager
-    yay -S --noconfirm asusctl supergfxctl rog-control-center
-    echo -e "Activating ROG services...\n"
+read -n1 -rep 'Would you like to install Asus ROG software support? (y/n)' ROG
+if [[ $ROG =~ ^[Yy]$ ]]; then
+    echo -e "\nInstalling ASUS ROG packages...\n"
+    yay -S --noconfirm asusctl 
+    yay -S --noconfirm supergfxctl 
+    yay -S --noconfirm rog-control-center
+    
+    echo -e "\nActivating ROG services...\n"
     sudo systemctl daemon-reload && sudo systemctl enable --now supergfxd
     sleep 2
+else
+    echo -e "\nAsus ROG software support not installed."
 fi
 
 ### Script is done ###
