@@ -1,6 +1,10 @@
 #!/bin/bash
 # The following will be installed to run Hyprland on Asus G15 with RTX GPU
 # 
+# NOTE! IF YOU ADD OR REMOVE PACKAGES, make sure proper spelling as per AUR and official Arch Repo and that are present.
+# Adding packages not in AUR or official Arch Repo, script will fail.
+#
+#
 # Below is a list of the packages that would be installed
 # hyprland-nvidia-git: This is the Hyprland compositor
 # foot: This is the default terminal
@@ -131,7 +135,7 @@ fi
 
 
 ### Install software for Asus ROG laptops ###
-read -n1 -rep 'Would you like to install Asus ROG software support? (y/n)' ROG
+read -n1 -rep '(OPTIONAL) Would you like to install Asus ROG software support? (y/n)' ROG
 if [[ $ROG =~ ^[Yy]$ ]]; then
     echo -e "\nInstalling ASUS ROG packages...\n"
     yay -S --noconfirm asusctl 
