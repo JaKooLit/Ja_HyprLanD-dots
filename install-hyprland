@@ -158,8 +158,7 @@ if [[ $HYP == "Y" || $HYP == "y" ]]; then
     if command -v Hyprland >/dev/null; then
         exec Hyprland
     else
-        echo -e "NOTE! no log-in manager installed by default. You can start Hyprland by typing Hyprland (note the capital H!).\n"
-        echo -e "Enjoy.\n"
+        echo -e "Hyprland not found. Please make sure it is installed and try again.\n"
         exit 1
     fi
 else
