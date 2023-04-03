@@ -151,13 +151,15 @@ fi
 
 ### Script is done ###
 echo -e "Installation Completed.\n"
-echo -e "You can start Hyprland by typing Hyprland (note the capital H). NOTE! It is highly recommended to reboot your computer first.\n"
+echo -e "You can start Hyprland by typing Hyprland (note the capital H!).\n"
+echo -e "NOTE! It is highly recommended to reboot your computer first.\n"
 read -n1 -rep 'Would you like to start Hyprland now? (y,n)' HYP
 if [[ $HYP == "Y" || $HYP == "y" ]]; then
     if command -v Hyprland >/dev/null; then
         exec Hyprland
     else
-        echo -e "Hyprland not found. Please make sure it is installed and try again.\n"
+        echo -e "NOTE! no log-in manager installed by default. You can start Hyprland by typing Hyprland (note the capital H!).\n"
+        echo -e "Enjoy.\n"
         exit 1
     fi
 else
