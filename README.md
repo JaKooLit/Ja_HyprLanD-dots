@@ -21,7 +21,7 @@ https://user-images.githubusercontent.com/85185940/227948968-03e5097d-9850-437f-
 
 ## Miscellaneous:
 
-- Icon fonts: `Shiny Dark Icons`
+- Themes: `Dracula`
 - Cursor theme: `Bibata Modern Ice`
 
 ## Needed packages:
