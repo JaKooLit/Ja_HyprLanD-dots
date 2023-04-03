@@ -16,7 +16,7 @@
     border: none;
     border-radius: 6px;
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: "FantasqueSansMono", fontawesome, "Font Awesome 5 Free";
+    font-family: "Fantasque Sans Mono", "fontawesome", "Font Awesome 5 Free";
     /* Recommended font sizes: 720p: ~14px, 1080p: ~18px */
     font-size: 22px;
     min-height: 0;
