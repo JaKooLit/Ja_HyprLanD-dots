@@ -53,6 +53,7 @@ https://user-images.githubusercontent.com/85185940/227948968-03e5097d-9850-437f-
 `fonts` - required awesome fonts. AUR and official repo have... else most of the waybar modules wont work. Most of configs here I used Fantasque Sans Mono. I used Cascadia Code Semibold Italic on foot.
 
 
+
 ## ✨ Arch Linux quick Installation:
 1.) optional: you can install nvidia-all driver from Frogging Family to replace the nvidia-drivers 
  - chmod +x nvidia-all-driver and run with nvidia-all-driver
@@ -67,10 +68,12 @@ c.) If you want to add or edit packages, edit install-hyprland script. Check fir
 d.) Installation of Asus-ROG-utilities are entirely optional. if you select no, will skip the step.
 
 
-## Notes: 
+
+## ✨ Manual Installation and Notes: 
 ### you can copy, create, change, however, would appreciate if you have have a better solution / changes so we will all improve :)
 
 These configs are used in my Laptop and Desktop. 
+Please note, Only provided are configs. Any Hyprland-related issues to be reported on Hyprland Github
 
 a.) Copy / Move files / folders in your ~/.config
 
@@ -85,6 +88,7 @@ e.) make sure scripts located at /hypr/scripts/ are executable as required. (use
 f.) Inspect /hypr/configs/exec.conf Choose which polkit gnome to use. to use. (Gentoo have different location of executables. Arch /usr/lib vs Gentoo /usr/libexec) Polkits by default are set to Arch Linux
 
 g.) if you have azerty keyboard [`this`](https://github.com/swaywm/sway/issues/1460?fbclid=IwAR1C8VcY_wWbGhXvT-5ApjJCQuJoJzhOVor6o5fdn0Nj1c6bD9JXoQAPQIg) might help
+
 
 
 ## ✨ Gentoo Specific notes
