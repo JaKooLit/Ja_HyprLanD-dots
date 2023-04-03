@@ -53,7 +53,7 @@ https://user-images.githubusercontent.com/85185940/227948968-03e5097d-9850-437f-
 `fonts` - required awesome fonts. AUR and official repo have... else most of the waybar modules wont work. Most of configs here I used Fantasque Sans Mono. I used Cascadia Code Semibold Italic on foot.
 
 
-## Arch Linux quick Installation:
+## ✨ Arch Linux quick Installation:
 1.) optional: you can install nvidia-all driver from Frogging Family to replace the nvidia-drivers 
  - chmod +x nvidia-all-driver and run with nvidia-all-driver
 
@@ -87,7 +87,12 @@ f.) Inspect /hypr/configs/exec.conf Choose which polkit gnome to use. to use. (G
 g.) if you have azerty keyboard [`this`](https://github.com/swaywm/sway/issues/1460?fbclid=IwAR1C8VcY_wWbGhXvT-5ApjJCQuJoJzhOVor6o5fdn0Nj1c6bD9JXoQAPQIg) might help
 
 
-<summary><b>GENTOO SPECIFIC</b></summary>
+## ✨ Gentoo Specific notes
+
+<details>
+<summary>
+Gentoo Specific
+</summary>
 
 1. [`Hyprland - Link to zugaina`](https://gpo.zugaina.org/gui-wm/hyprland) have 3 overlays. I am using wayland-desktop overlay. Nvidia and openrc users, you should look into thegreatmcpain overlay. Or of course you can compile hyprland from source
 2. Waybar - from Gentoo repo's waybar, I experienced unclickable workspaces. I have installed from useless-overlay. Click [`here`](https://github.com/JaKooLit/Ja_HyprLanD-dots/blob/main/misc/Gentoo-Waybar) for guidance
