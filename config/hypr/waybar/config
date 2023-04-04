@@ -13,5 +13,5 @@
 
   "modules-left": ["wlr/workspaces", "cpu", "temperature", "memory", "custom/weather", "idle_inhibitor"],
   //"modules-center": ["hyprland/submap"], 
-  "modules-right": ["hyprland/window", "tray", "clock", "battery", "backlight", "pulseaudio", "custom/power"],
+  "modules-right": ["hyprland/window", "tray", "clock", "battery", "backlight", "pulseaudio", "pulseaudio#microphone", "custom/power"],
 }
