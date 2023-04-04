@@ -24,7 +24,7 @@ get_icon() {
 
 # Notify
 notify_user() {
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$(get_icon)" "Volume : $(get_volume)"
+	notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$(get_icon)" "Volume : $(get_volume) %"
 }
 
 # Increase Volume
@@ -54,7 +54,33 @@ toggle_mic() {
 		pamixer -u --default-source u && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$iDIR/microphone.png" "Microphone Switched ON"
 	fi
 }
+# Get icons
+get_mic_icon() {
+	current=$(pamixer --default-source --get-volume)
+	if [[ "$current" -eq "0" ]]; then
+		echo "$iDIR/microphone.png"
+	elif [[ ("$current" -ge "0") && ("$current" -le "30") ]]; then
+		echo "$iDIR/microphone.png"
+	elif [[ ("$current" -ge "30") && ("$current" -le "60") ]]; then
+		echo "$iDIR/microphone.png"
+	elif [[ ("$current" -ge "60") && ("$current" -le "100") ]]; then
+		echo "$iDIR/microphone.png"
+	fi
+}
+# Notify
+notify_mic_user() {
+	notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$(get_mic_icon)" "Mic-Level : $(pamixer --default-source --get-volume) %"
+}
 
+# Increase MIC Volume
+inc_mic_volume() {
+	pamixer --default-source -i 5 && notify_mic_user
+}
+
+# Decrease MIC Volume
+dec_mic_volume() {
+	pamixer --default-source -d 5 && notify_mic_user
+}
 
 # Execute accordingly
 if [[ "$1" == "--get" ]]; then
@@ -69,6 +95,12 @@ elif [[ "$1" == "--toggle-mic" ]]; then
 	toggle_mic
 elif [[ "$1" == "--get-icon" ]]; then
 	get_icon
+elif [[ "$1" == "--get-mic-icon" ]]; then
+	get_mic_icon
+elif [[ "$1" == "--mic-inc" ]]; then
+	inc_mic_volume
+elif [[ "$1" == "--mic-dec" ]]; then
+	dec_mic_volume
 else
 	get_volume
 fi
