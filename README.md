@@ -57,6 +57,7 @@ https://user-images.githubusercontent.com/85185940/227948968-03e5097d-9850-437f-
 ## ✨ Arch Linux quick Installation:
 
 A guide to install :[`Youtube Link`](https://youtu.be/_deaeSU1WK8)
+
 1.) optional: you can install nvidia-all driver from Frogging Family to replace the nvidia-drivers 
  - chmod +x nvidia-all-driver and run with nvidia-all-driver
 
