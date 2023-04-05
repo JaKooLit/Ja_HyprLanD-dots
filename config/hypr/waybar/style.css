@@ -16,9 +16,10 @@
     border: none;
     border-radius: 6px;
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: "Fantasque Sans Mono", "fontawesome", "Font Awesome 5 Free";
+    font-family: "Fantasque Sans Mono", "JetBrainsMono Nerd Font", "fontawesome", "Font Awesome 5 Free";
     /* Recommended font sizes: 720p: ~14px, 1080p: ~18px */
-    font-size: 22px;
+    font-size: 20px;
+    font-weight: bold;
     min-height: 0;
 }
 
