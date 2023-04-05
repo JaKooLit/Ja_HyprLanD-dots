@@ -11,7 +11,7 @@
   "margin-left": 1,
   "margin-right": 1,
 
-  "modules-left": ["wlr/workspaces", "cpu", "temperature", "memory", "custom/weather", "idle_inhibitor"],
+  "modules-left": ["custom/menu", "wlr/workspaces", "cpu", "temperature", "memory", "custom/weather", "idle_inhibitor"],
   //"modules-center": ["hyprland/submap"], 
   "modules-right": ["hyprland/window", "tray", "clock", "battery", "backlight", "pulseaudio", "pulseaudio#microphone", "custom/power"],
 }
