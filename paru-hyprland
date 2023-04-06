@@ -1,0 +1,177 @@
+#!/bin/bash
+# The following will be installed to run Hyprland on Asus G15 with RTX GPU
+# Credit to SolDoesTech for the format and inspiration
+#
+# NOTE! IF YOU ADD OR REMOVE PACKAGES, make sure proper spelling as per AUR and official Arch Repo and that are present.
+# Adding packages not in AUR or official Arch Repo, script will fail.
+#
+#
+# Below is a list of the packages that would be installed
+# hyprland-nvidia-git: This is the Hyprland compositor
+# foot: This is the default terminal
+# waybar-hyprland: This is a fork of waybar with Hyprland workspace support
+# swaybg: This is used to set a desktop background image
+# swaylock-effects: This allows for the locking of the desktop its a fork that adds some editional visual effects
+# wofi: This is an application launcher menu
+# wlogout: This is a logout menu that allows for shutdown, reboot and sleep
+# mako: This is a graphical notification daemon
+# thunar with necessary plugins: This is a graphical file manager
+# ttf-jetbrains-mono-nerd : some nerd fonts needed for proper icons in waybar
+# otf-font-awesome-4 and otf-font-awesome # necessary for symbols / weather
+# ttf-droid - suggested for international fonts to display properly
+# polkit-gnome: needed to get superuser access on some graphical appliaction
+# python-requests: needed for the weather module script to execute
+# grim: This is a screenshot tool it grabs images from a Wayland compositor
+# slurp: This helps with screenshots, it selects a region in a Wayland compositor
+# viewnior: for photo viewing
+# pamixer: This helps with audio settings such as volume
+# brightnessctl: used to control monitor bright level
+# bluez: the bluetooth service
+# bluez-utils: command line utilities to interact with bluetooth devices
+# blueman - Bluetooth manager
+# lxappearance: used to set GTK theme
+# dracula-gtk-theme: the Dracula theme, it fits the overall look and feel
+# dracula-icons-git" set of icons to go with the Dracula theme
+# bibata-cursor-theme-bin - cursor theme
+# xdg-desktop-portal-hyprland-git: xdg-desktop-portal backend for hyprland
+# mpv: for wofi-beats to work
+# qt5ct: for visual settings for qt-apps
+# mousepad: simple text editor
+
+# Check if paru is installed
+ISPARU=/sbin/paru
+if [ -f "$ISPARU" ]; then 
+    echo -e "$COK - paru was located, moving on."
+else 
+    echo -e "$CWR - paru was NOT located"
+    read -n1 -rep $'[\e[1;33mACTION\e[0m] - Would you like to install paru (y,n) ' INSTPARU
+    if [[ $INSTPARU == "Y" || $INSTPARU == "y" ]]; then
+	git clone https://aur.archlinux.org/paru-bin.git
+        cd paru-bin
+        makepkg -si --noconfirm 
+        cd ..
+        
+    else
+        echo -e "$CER - Paru is required for this script, now exiting"
+        exit
+    fi
+fi
+
+
+# Prompt user to install packages
+# Function to check if a command executed successfully
+function check_command_status {
+    if [ $? -ne 0 ]; then
+        echo -e "\nError executing command: $1"
+        exit 1
+    fi
+}
+
+read -n1 -rep 'Would you like to install the packages? (y/n)' INST
+echo
+
+if [[ $INST == "Y" || $INST == "y" ]]; then
+    # Install packages
+    paru -S --noconfirm hyprland-nvidia-git 
+    check_command_status "paru -S hyprland-nvidia-git"
+    
+    paru -S --noconfirm waybar-hyprland-git 
+    check_command_status "paru -S waybar-hyprland-git"
+    
+    paru -S --noconfirm xdg-desktop-portal-hyprland-git 
+    check_command_status "paru -S xdg-desktop-portal-hyprland-git"
+    
+    paru -S --noconfirm dracula-icons-git 
+    check_command_status "paru -S dracula-icons-git"
+    
+    paru -S --noconfirm foot swaybg swaylock-effects wofi wlogout mako thunar gvfs thunar-volman tumbler \
+        ffmpegthumbs otf-font-awesome ttf-jetbrains-mono-nerd otf-font-awesome-4 ttf-fantasque-sans-mono qt5ct wl-clipboard \
+        polkit-gnome python-requests grim slurp pamixer brightnessctl viewnior pavucontrol dracula-gtk-theme \
+        bluez bluez-utils blueman nwg-look-bin bibata-cursor-theme-bin mousepad mpv network-manager-applet 
+    check_command_status "paru -S (packages)"
+    
+    # Start the bluetooth service
+    echo -e "\nStarting the Bluetooth service..."
+    sudo systemctl enable --now bluetooth.service
+    check_command_status "sudo systemctl enable --now bluetooth.service"
+    sleep 2
+    
+    # Clean out other portals
+    echo -e "\nCleaning out conflicting xdg portals..."
+    sudo pacman -R --noconfirm xdg-desktop-portal-gnome 
+    sudo pacman -R --noconfirm xdg-desktop-portal-gtk   
+    sudo pacman -R --noconfirm xdg-desktop-portal-kde   
+    sudo pacman -R --noconfirm xdg-desktop-portal-wlr   
+    sudo pacman -R --noconfirm xdg-desktop-portal-lxqt
+      
+    echo -e "\nPackages installed successfully."
+fi
+
+### Copy Config Files ###
+set -e # Exit immediately if a command exits with a non-zero status.
+
+read -n1 -rep 'Would you like to copy config and wallpaper files? (y,n)' CFG
+if [[ $CFG == "Y" || $CFG == "y" ]]; then
+    echo -e "Copying config files...\n"
+    mkdir -p ~/.config
+    cp -r config/hypr ~/.config/ || { echo "Error: Failed to copy hypr config files."; exit 1; }
+    cp -r config/foot ~/.config/ || { echo "Error: Failed to copy foot config files."; exit 1; }
+    cp -r config/swaylock ~/.config/ || { echo "Error: Failed to copy swaylock config files."; exit 1; }
+    cp -r config/wlogout ~/.config/ || { echo "Error: Failed to copy wlogout config files."; exit 1; }
+    mkdir -p ~/Pictures
+    cp -r wallpapers ~/Pictures/ || { echo "Error: Failed to copy wallpapers."; exit 1; }
+    
+    # Set some files as executable 
+    chmod +x ~/.config/hypr/scripts/airplane-mode.sh
+    chmod +x ~/.config/hypr/scripts/brightness
+    chmod +x ~/.config/hypr/scripts/changeLayout
+    chmod +x ~/.config/hypr/scripts/changeWallpaper
+    chmod +x ~/.config/hypr/scripts/fullmenu
+    chmod +x ~/.config/hypr/scripts/glassmorphismToggle
+    chmod +x ~/.config/hypr/scripts/lockscreen
+    chmod +x ~/.config/hypr/scripts/menu
+    chmod +x ~/.config/hypr/scripts/notifications
+    chmod +x ~/.config/hypr/scripts/portal-arch-hyprland
+    chmod +x ~/.config/hypr/scripts/screenshot
+    chmod +x ~/.config/hypr/scripts/startup
+    chmod +x ~/.config/hypr/scripts/statusbar
+    chmod +x ~/.config/hypr/scripts/switch-lid.sh
+    chmod +x ~/.config/hypr/scripts/touchpad.sh
+    chmod +x ~/.config/hypr/scripts/volume
+    chmod +x ~/.config/hypr/scripts/weather.sh
+    chmod +x ~/.config/hypr/scripts/wofi-beats
+fi
+
+
+### Install software for Asus ROG laptops ###
+read -n1 -rep '(OPTIONAL) Would you like to install Asus ROG software support? (y/n)' ROG
+if [[ $ROG =~ ^[Yy]$ ]]; then
+    echo -e "\nInstalling ASUS ROG packages...\n"
+    paru -S --noconfirm asusctl 
+    paru -S --noconfirm supergfxctl 
+    paru -S --noconfirm rog-control-center
+    
+    echo -e "\nActivating ROG services...\n"
+    sudo systemctl daemon-reload && sudo systemctl enable --now supergfxd
+    sleep 2
+else
+    echo -e "\nAsus ROG software support not installed."
+fi
+
+### Script is done ###
+echo -e "Installation Completed.\n"
+echo -e "You can start Hyprland by typing Hyprland (note the capital H!).\n"
+echo -e "NOTE! No Login Manager installed. You can start Hyprland by typing Hyprland (note the capital H!).\n"
+echo -e "NOTE! It is highly recommended to reboot your computer first.\n"
+read -n1 -rep 'Would you like to start Hyprland now? (y,n)' HYP
+if [[ $HYP == "Y" || $HYP == "y" ]]; then
+    if command -v Hyprland >/dev/null; then
+        exec Hyprland
+    else
+        echo -e "Hyprland not found. Please make sure it is installed and try again.\n"
+        exit 1
+    fi
+else
+    exit
+fi
+
