@@ -50,7 +50,7 @@
   "on-click-right": "foot --title btop sh -c 'btop'"
 },
  "custom/menu": {
-  "format": "  ",
+  "format": "",
   "tooltip": false,
   "on-click": "$HOME/.config/hypr/scripts/menu",
 },
@@ -99,7 +99,7 @@
      "warning": 30,
      "critical": 15
 },
-   "format": "{icon} {capacity}%",
+   "format": "{icon}  {capacity}%",
    "format-charging": " {capacity}%",
    "format-plugged": " {capacity}%",
    "format-full": "{icon} Full",
@@ -163,16 +163,6 @@
   "format-alt": " {bandwidthUpBits} |  {bandwidthDownBits}",
   "tooltip-format": " {ifname} via {gwaddr}",
 },
- "custom/weather": {
-  "format": " {} ",
-  "format-alt": "{alt}: {}",
-  "format-alt-click": "click-right",
-  "interval": 1800,
-  "return-type": "json",
-  "exec": "~/.config/hypr/scripts/weather.sh",
-  "exec-if": "ping wttr.in -c1"
-},
-
  "custom/cycle_wall":{
   "format":"",
   "on-click": "~/.config/hypr/scripts/changeWallpaper",
