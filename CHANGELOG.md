@@ -1,3 +1,6 @@
+# 10 April 2023
+- replaced and delete some wallpapers
+
 # 9 April 2023
 -replaced xdg-desktop-portal-hyprland-git with xdg-desktop-portal-hyprland on both scripts. xdg-desktop-portal-hyprland now in Arch community repo
 
