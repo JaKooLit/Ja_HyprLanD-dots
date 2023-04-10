@@ -63,6 +63,8 @@ A guide to install :[`Youtube Link`](https://youtu.be/_deaeSU1WK8)
 
 a.) Install yay (chmod +x yay-bin-install and run the script). You can also install paru if desired
 
+a.1) paru-hyprland was created to use paru instead of yay. Paru will be installed automatically if you select yes during the installation. make sure to run (chmod +x paru-hyprland first and run the script)
+
 b.) You can install one by one packages or choose the automatic installer script. (chmod +x install-hyprland and run the script). 
 NOTE. If you install paru instead of yay, ensure to edit install-hyprland and change all yay with paru
 
