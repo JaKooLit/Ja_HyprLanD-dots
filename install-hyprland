@@ -47,16 +47,6 @@ else
     exit 1
 fi
 
-
-# Prompt user to install packages
-# Function to check if a command executed successfully
-function check_command_status {
-    if [ $? -ne 0 ]; then
-        echo -e "\nError executing command: $1"
-        exit 1
-    fi
-}
-
 ### Disable wifi powersave mode ###
 read -n1 -rep "${CAT} Would you like to disable wifi powersave? (y,n)" WIFI
 if [[ $WIFI == "Y" || $WIFI == "y" ]]; then
@@ -69,6 +59,15 @@ if [[ $WIFI == "Y" || $WIFI == "y" ]]; then
     sleep 3
 fi
 
+
+# Prompt user to install packages
+# Function to check if a command executed successfully
+function check_command_status {
+    if [ $? -ne 0 ]; then
+        echo -e "\nError executing command: $1"
+        exit 1
+    fi
+}
 read -n1 -rep 'Would you like to install the packages? (y/n)' INST
 echo
 
