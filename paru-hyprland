@@ -1,13 +1,11 @@
 #!/bin/bash
 # The following will be installed to run Hyprland on Asus G15 with RTX GPU
-# Credit to SolDoesTech for the format and inspiration
-#
+# 
 # NOTE! IF YOU ADD OR REMOVE PACKAGES, make sure proper spelling as per AUR and official Arch Repo and that are present.
 # Adding packages not in AUR or official Arch Repo, script will fail.
 #
-#
 # Below is a list of the packages that would be installed
-# hyprland-nvidia-git: This is the Hyprland compositor
+# hyprland- This is the Hyprland compositor
 # foot: This is the default terminal
 # waybar-hyprland: This is a fork of waybar with Hyprland workspace support
 # swaybg: This is used to set a desktop background image
@@ -38,79 +36,145 @@
 # qt5ct: for visual settings for qt-apps
 # mousepad: simple text editor
 
-# Check if paru is installed
-ISPARU=/sbin/paru
-if [ -f "$ISPARU" ]; then 
-    echo -e "$COK - paru was located, moving on."
-else 
-    echo -e "$CWR - paru was NOT located"
-    read -n1 -rep $'[\e[1;33mACTION\e[0m] - Would you like to install paru (y,n) ' INSTPARU
-    if [[ $INSTPARU == "Y" || $INSTPARU == "y" ]]; then
-	git clone https://aur.archlinux.org/paru-bin.git
-        cd paru-bin
-        makepkg -si --noconfirm 
-        cd ..
-        
-    else
-        echo -e "$CER - Paru is required for this script, now exiting"
-        exit
-    fi
-fi
 
+# Define color variables
+GREEN="$(tput setaf 2)[OK]$(tput sgr0)"
+RED="$(tput setaf 1)[ERROR]$(tput sgr0)"
+YELLOW="$(tput setaf 3)[NOTE]$(tput sgr0)"
+CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
 
-# Prompt user to install packages
 # Function to check if a command executed successfully
 function check_command_status {
     if [ $? -ne 0 ]; then
-        echo -e "\nError executing command: $1"
+        printf "\nError executing command: %s\n" "$1"
         exit 1
     fi
 }
 
-read -n1 -rep 'Would you like to install the packages? (y/n)' INST
+# Function to print error messages
+print_error() {
+    printf "%sError: %s%s\n" "$RED" "$1" "$NC" >&2
+}
+
+# Function to print success messages
+print_success() {
+    printf "%s%s%s\n" "$GREEN" "$1" "$NC"
+}
+
+# Set the script to exit on error
+set -e
+
+printf "Welcome to the Arch Linux Hyprland installer!\n"
+sleep 3
+
+# Check if paru is installed
+ISPARU=/sbin/paru
+if [ -f "$ISPARU" ]; then
+    printf "%s - paru was located, moving on.\n" "$GREEN"
+else 
+    printf "%s - paru was NOT located\n" "$YELLOW"
+    read -n1 -rep "${CAT} Would you like to install paru (y,n)" INSTPARU
+    if [[ $INSTPARU == "Y" || $INSTPARU == "y" ]]; then
+        git clone https://aur.archlinux.org/paru-bin.git
+        cd paru-bin
+        makepkg -si --noconfirm 
+        cd ..
+    else
+        printf "%s - Paru is required for this script, now exiting\n" "$RED"
+        exit
+    fi
+fi
+
+# Prompt user to install packages
+
+# Install necessary packages
+read -n1 -rep "${CAT} Would you like to install the packages? (y/n)" inst
 echo
 
-if [[ $INST == "Y" || $INST == "y" ]]; then
+if [[ $inst =~ ^[Yy]$ ]]; then
+    read -n1 -rep "${CAT} Would you like to install the Nvidia Hyprland? (y/n)" inst2
+    echo
+
+    if [[ $inst2 =~ ^[Yy]$ ]]; then
+        # Install Nvidia Hyprland
+        if ! paru -S --noconfirm hyprland-nvidia-git; then
+            print_error "Failed to install Nvidia Hyprland - pls remove any conflicting package"
+            exit 1
+        fi
+    else
+        # Install non-Nvidia Hyprland
+        echo -e "${YELLOW} None Nvidia-Hyprland will be installed."
+        if ! paru -S --noconfirm hyprland; then
+            print_error "Failed to install Hyprland."
+            exit 1
+        fi
+    fi
+
+    echo -e "${YELLOW} Installing additional packages. Please wait..."
+    sleep 1
+
     # Install packages
-    paru -S --noconfirm hyprland-nvidia-git 
-    check_command_status "paru -S hyprland-nvidia-git"
-    
-    paru -S --noconfirm waybar-hyprland-git 
-    check_command_status "paru -S waybar-hyprland-git"
-    
-    paru -S --noconfirm xdg-desktop-portal-hyprland 
-    check_command_status "paru -S xdg-desktop-portal-hyprland"
-    
-    paru -S --noconfirm dracula-icons-git 
-    check_command_status "paru -S dracula-icons-git"
-    
-    paru -S --noconfirm foot swaybg swaylock-effects wofi wlogout mako thunar gvfs thunar-volman tumbler \
-        ffmpegthumbs otf-font-awesome ttf-jetbrains-mono-nerd otf-font-awesome-4 ttf-fantasque-sans-mono qt5ct wl-clipboard \
-        polkit-gnome python-requests grim slurp pamixer brightnessctl viewnior pavucontrol dracula-gtk-theme \
-        bluez bluez-utils blueman nwg-look-bin bibata-cursor-theme-bin mousepad mpv network-manager-applet 
-    check_command_status "paru -S (packages)"
-    
+    font_pkgs="otf-font-awesome ttf-jetbrains-mono-nerd otf-font-awesome-4 ttf-fantasque-sans-mono"
+    theme_pkgs="dracula-gtk-theme bibata-cursor-theme-bin"
+    app_pkgs="foot swaybg swaylock-effects wofi wlogout mako thunar gvfs thunar-volman tumbler ffmpegthumbs qt5ct wl-clipboard polkit-gnome python-requests grim slurp pamixer brightnessctl viewnior pavucontrol mpv network-manager-applet mousepad mpv bluez bluez-utils blueman nwg-look-bin"
+
+        
+    if ! paru -S --noconfirm $hyprland_pkg waybar-hyprland-git xdg-desktop-portal-hyprland dracula-icons-git $font_pkgs $theme_pkgs $app_pkgs; then
+        print_error "Failed to install additional packages."
+        exit 1
+    fi
+
     # Start the bluetooth service
-    echo -e "\nStarting the Bluetooth service..."
-    sudo systemctl enable --now bluetooth.service
-    check_command_status "sudo systemctl enable --now bluetooth.service"
+    echo -e "${YELLOW} Starting the Bluetooth service..."
+    if ! sudo systemctl enable --now bluetooth.service; then
+        print_error "Failed to start the Bluetooth service."
+        exit 1
+    fi
+
+    echo
+    print_success " All packages installed successfully."
+else
+    echo
+    print_error " Packages not installed."
     sleep 2
-    
-    # Clean out other portals
-    echo -e "\nCleaning out conflicting xdg portals..."
-    sudo pacman -R --noconfirm xdg-desktop-portal-gnome 
-    sudo pacman -R --noconfirm xdg-desktop-portal-gtk   
-    sudo pacman -R --noconfirm xdg-desktop-portal-kde   
-    sudo pacman -R --noconfirm xdg-desktop-portal-wlr   
-    sudo pacman -R --noconfirm xdg-desktop-portal-lxqt
-      
-    echo -e "\nPackages installed successfully."
 fi
+   
+ # Clean out other portals
+echo -e "\nChecking if any other xdg-desktop-portals exist..."
+
+# Check if packages are installed and uninstall if present
+if pacman -Qs xdg-desktop-portal-gnome > /dev/null ; then
+    echo "Removing xdg-desktop-portal-gnome..."
+    sudo pacman -R --noconfirm xdg-desktop-portal-gnome
+fi
+
+if pacman -Qs xdg-desktop-portal-gtk > /dev/null ; then
+    echo "Removing xdg-desktop-portal-gtk..."
+    sudo pacman -R --noconfirm xdg-desktop-portal-gtk
+fi
+
+if pacman -Qs xdg-desktop-portal-kde > /dev/null ; then
+    echo "Removing xdg-desktop-portal-kde..."
+    sudo pacman -R --noconfirm xdg-desktop-portal-kde
+fi
+
+if pacman -Qs xdg-desktop-portal-wlr > /dev/null ; then
+    echo "Removing xdg-desktop-portal-wlr..."
+    sudo pacman -R --noconfirm xdg-desktop-portal-wlr
+fi
+
+if pacman -Qs xdg-desktop-portal-lxqt > /dev/null ; then
+    echo "Removing xdg-desktop-portal-lxqt..."
+    sudo pacman -R --noconfirm xdg-desktop-portal-lxqt
+fi
+
+print_success " All other XDG-DESKTOP-PORTAL Implementation Cleared"
+
 
 ### Copy Config Files ###
 set -e # Exit immediately if a command exits with a non-zero status.
 
-read -n1 -rep 'Would you like to copy config and wallpaper files? (y,n)' CFG
+read -n1 -rep "${CAT} Would you like to copy config and wallpaper files? (y,n)" CFG
 if [[ $CFG == "Y" || $CFG == "y" ]]; then
     echo -e "Copying config files...\n"
     mkdir -p ~/.config
@@ -144,7 +208,7 @@ fi
 
 
 ### Install software for Asus ROG laptops ###
-read -n1 -rep '(OPTIONAL) Would you like to install Asus ROG software support? (y/n)' ROG
+read -n1 -rep "${CAT} OPTIONAL - ONLY for ROG Laptops) Would you like to install Asus ROG software support? (y/n)" ROG
 if [[ $ROG =~ ^[Yy]$ ]]; then
     echo -e "\nInstalling ASUS ROG packages...\n"
     paru -S --noconfirm asusctl 
@@ -158,12 +222,23 @@ else
     echo -e "\nAsus ROG software support not installed."
 fi
 
+### Disable wifi powersave mode ###
+read -n1 -rep "${CAT} Would you like to disable wifi powersave? (y,n)" WIFI
+if [[ $WIFI == "Y" || $WIFI == "y" ]]; then
+    LOC="/etc/NetworkManager/conf.d/wifi-powersave.conf"
+    echo -e "$YELLOW The following has been added to $LOC.\n"
+    echo -e "[connection]\nwifi.powersave = 2" | sudo tee -a $LOC
+    echo -e "\n"
+    echo -e "$YELLOW Restarting NetworkManager service...\n"
+    sudo systemctl restart NetworkManager
+    sleep 3
+fi
 ### Script is done ###
 echo -e "Installation Completed.\n"
 echo -e "You can start Hyprland by typing Hyprland (note the capital H!).\n"
-echo -e "NOTE! No Login Manager installed. You can start Hyprland by typing Hyprland (note the capital H!).\n"
-echo -e "NOTE! It is highly recommended to reboot your computer first.\n"
-read -n1 -rep 'Would you like to start Hyprland now? (y,n)' HYP
+echo -e "${YELLOW} No Login Manager installed. You can start Hyprland by typing Hyprland (note the capital H!).\n"
+echo -e "${YELLOW} It is highly recommended to reboot your computer first.\n"
+read -n1 -rep "Would you like to start Hyprland now? (y,n)" HYP
 if [[ $HYP == "Y" || $HYP == "y" ]]; then
     if command -v Hyprland >/dev/null; then
         exec Hyprland
