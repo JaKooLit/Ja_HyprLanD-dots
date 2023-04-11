@@ -58,6 +58,8 @@ https://user-images.githubusercontent.com/85185940/227948968-03e5097d-9850-437f-
 
 A guide to install :[`Youtube Link`](https://youtu.be/_deaeSU1WK8)
 
+Dual Boot Guide :[`Youtube Link`](https://www.youtube.com/watch?v=ADYqS8psSJ0)
+
 1.) optional: you can install nvidia-all driver from Frogging Family to replace the nvidia-drivers 
  - chmod +x nvidia-all-driver and run with nvidia-all-driver
 
