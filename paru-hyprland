@@ -76,6 +76,9 @@ else
         printf "%s - paru is required for this script, now exiting\n" "$RED"
         exit
     fi
+# update system before proceed
+    printf "${YELLOW} System Update to avoid issue\n" "GREEN"
+    paru -Syu --noconfirm
 fi
 
 # Prompt user to install packages
