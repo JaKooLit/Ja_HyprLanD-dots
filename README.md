@@ -52,6 +52,8 @@ https://user-images.githubusercontent.com/85185940/227948968-03e5097d-9850-437f-
 
 `fonts` - required awesome fonts. AUR and official repo have... else most of the waybar modules wont work. Most of configs here I used Fantasque Sans Mono. I used Cascadia Code Semibold Italic on foot.
 
+`pipewire` - needed pipewire pipewire-pulse pipewire-alsa
+
 
 
 ## ✨ Arch Linux quick Installation:
