@@ -196,6 +196,10 @@ if [[ $CFG == "Y" || $CFG == "y" ]]; then
     cp -r config/foot ~/.config/ || { echo "Error: Failed to copy foot config files."; exit 1; }
     cp -r config/swaylock ~/.config/ || { echo "Error: Failed to copy swaylock config files."; exit 1; }
     cp -r config/wlogout ~/.config/ || { echo "Error: Failed to copy wlogout config files."; exit 1; }
+    cp -r config/xfce4 ~/.config/ || { echo "Error: Failed to copy xfce4 config files."; exit 1; }
+    cp -r config/Thunar ~/.config/ || { echo "Error: Failed to copy Thunar config files."; exit 1; }
+    cp -r config/btop ~/.config/ || { echo "Error: Failed to copy btop config files."; exit 1; } 
+    cp -r config/cava ~/.config/ || { echo "Error: Failed to copy cava config files."; exit 1; } 
     mkdir -p ~/Pictures
     cp -r wallpapers ~/Pictures/ || { echo "Error: Failed to copy wallpapers."; exit 1; }
     
