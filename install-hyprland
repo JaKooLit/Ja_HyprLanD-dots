@@ -41,7 +41,7 @@
 ISYAY=/sbin/yay
 if [ -f "$ISYAY" ]; then 
     echo "yay was located, updating system packages..."
-    yay -Syu || { echo "Error: failed to update system packages using yay. Exiting script."; exit 1; }
+    yay -Syu --noconfirm || { echo "Error: failed to update system packages using yay. Exiting script."; exit 1; }
 else 
     echo "Error: yay was not located, please install yay first. Exiting script."
     exit 1
