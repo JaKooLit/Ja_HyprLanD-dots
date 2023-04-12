@@ -32,7 +32,13 @@ bs-hl-color=31748f
 grace=2
 grace-no-mouse
 grace-no-touch
-datestr=%a, %B %e
-timestr=%I:%M %p
 fade-in=0.2
 ignore-empty-password
+
+# AM/PM formats (American Format)
+#datestr=%a, %B %e
+#timestr=%I:%M %p
+
+#24 HRS clock format and standard Europe Date Format
+timestr=%H:%M:%S
+datestr=%d %B, %a
