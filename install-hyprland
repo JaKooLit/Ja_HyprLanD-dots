@@ -146,6 +146,8 @@ if [[ $CFG == "Y" || $CFG == "y" ]]; then
     chmod +x ~/.config/hypr/scripts/volume
     chmod +x ~/.config/hypr/scripts/weather.sh
     chmod +x ~/.config/hypr/scripts/wofi-beats
+else
+   print_error " No Config files and wallpaper files copied"
 fi
 
 
