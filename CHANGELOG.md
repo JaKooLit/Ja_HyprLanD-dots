@@ -1,7 +1,8 @@
 # 12 April 2023
 - update swaylock clock and date format . kindly change in ~/.config/swaylock/config for desired format
 - updated paru-installer
-- added yay auto installer (yay-hyprland-v2)
+- added yay auto installer (yay-hyprland)
+- uploaded btop config folder
 
 # 11 April 2023
 - Updated paru-hyprland script to choose hyprland or hyprland-nvidia
