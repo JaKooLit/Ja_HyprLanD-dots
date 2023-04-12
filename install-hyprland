@@ -85,7 +85,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     yay -S --noconfirm dracula-icons-git 
     check_command_status "yay -S dracula-icons-git"
     
-    yay -S --noconfirm foot swaybg swaylock-effects wofi wlogout mako thunar gvfs thunar-volman tumbler \
+    yay -S --noconfirm foot swaybg swaylock-effects wofi wlogout mako thunar gvfs thunar-volman tumbler cava \
         ffmpegthumbs otf-font-awesome ttf-jetbrains-mono-nerd otf-font-awesome-4 ttf-fantasque-sans-mono qt5ct wl-clipboard \
         polkit-gnome python-requests grim slurp pamixer brightnessctl viewnior pavucontrol dracula-gtk-theme \
         bluez bluez-utils blueman lxappearance bibata-cursor-theme-bin mousepad mpv network-manager-applet 
