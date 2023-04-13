@@ -1,3 +1,6 @@
+# 13 April 2023
+- added playerctl for multimedia keyboard hotkeys
+
 # 12 April 2023
 - update swaylock clock and date format . kindly change in ~/.config/swaylock/config for desired format
 - updated paru-installer
