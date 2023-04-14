@@ -1,3 +1,6 @@
+# 14 April 2023
+- updated Readme Arch Linux installation notes
+
 # 13 April 2023
 - added playerctl for multimedia keyboard hotkeys
 
