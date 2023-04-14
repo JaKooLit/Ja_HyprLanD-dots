@@ -67,14 +67,12 @@ Dual Boot Guide :[`Youtube Link`](https://www.youtube.com/watch?v=ADYqS8psSJ0)
 1.) optional: you can install nvidia-all driver from Frogging Family to replace the nvidia-drivers 
  - chmod +x nvidia-all-driver and run with nvidia-all-driver
 
-a.) Install yay (chmod +x yay-bin-install and run the script). You can also install paru if desired
+a.) paru-hyprland and yay-hyprland autoinstaller script included. Paru / Yay will be installed automatically if you select yes during the installation. 
+Make script executable by running chmod +x (for example chmod +x paru-hyprland) then ran ./paru-hyprland.
 
-a.1) paru-hyprland was created to use paru instead of yay. Paru will be installed automatically if you select yes during the installation. make sure to run (chmod +x paru-hyprland first and run the script)
+b.) You can install one by one packages or choose the automatic installer script.
 
-b.) You can install one by one packages or choose the automatic installer script. (chmod +x install-hyprland and run the script). 
-NOTE. If you install paru instead of yay, ensure to edit install-hyprland and change all yay with paru
-
-c.) If you want to add or edit packages, edit install-hyprland script. Check first if packages are present on AUR or official else the script will fail.
+c.) If you want to add or edit packages, edit install-hyprland (old script), yay-hyprland or paru-hyprland script. Ensure packages are present on AUR or official else the script will fail.
 
 d.) Installation of Asus-ROG-utilities are entirely optional. if you select no, will skip the step.
 
