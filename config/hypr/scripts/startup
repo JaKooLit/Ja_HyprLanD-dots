@@ -10,18 +10,10 @@ for _prs in "${_ps[@]}"; do
 	fi
 done
 
-# Apply themes
-#${SCRIPTSDIR}/gtkthemes &
-
 # Lauch notification daemon (mako)
 ${SCRIPTSDIR}/notifications &
 
 # Lauch statusbar (waybar)
 ${SCRIPTSDIR}/statusbar &
 
-#insync start &
-#dropbox &
-#telegram-desktop &
-#discord &
-#nm-applet-indicator
-#variety &
+
