@@ -1,6 +1,4 @@
-
 https://user-images.githubusercontent.com/85185940/227948968-03e5097d-9850-437f-8109-8d376bf81e9f.mp4
-
 
 <br>
 <h3 align = "center"> Arch / Gentoo Hyprland Dotfiles</h3>
@@ -8,13 +6,10 @@ https://user-images.githubusercontent.com/85185940/227948968-03e5097d-9850-437f-
 
 <img src="https://github.com/JaKooLit/Ja_HyprLanD-dots/blob/main/preview/Arch.png" alt="">
 
-<img src="https://github.com/JaKooLit/Ja_HyprLanD-dots/blob/main/preview/Gentoo.png" alt="">
-
 ## Components:
 
 - Main Component:[`Hyprland`](https://github.com/hyprwm/Hyprland)
 - Terminal: [`Foot`](https://github.com/r-c-f/foot)
-- Shell: [`Zshell`](https://www.zsh.org/)
 - Status bar: [`Waybar`](https://github.com/Alexays/Waybar)
 - Menu : [`Wofi`](https://hg.sr.ht/~scoopta/wofi)
 - FIle Manager: [`Thunar`](https://docs.xfce.org/xfce/thunar/start)
@@ -48,14 +43,13 @@ https://user-images.githubusercontent.com/85185940/227948968-03e5097d-9850-437f-
 
 `pamixer` - for volume control notification. 
 
-`playerctl` - keyboard hotkeys multimedia controls
+`playerctl` - Keyboard hotkeys multimedia controls
 
 `xorg-xwayland` - needed to run some non-wayland app especially games
 
 `fonts` - required awesome fonts. AUR and official repo have... else most of the waybar modules wont work. Most of configs here I used Fantasque Sans Mono. I used Cascadia Code Semibold Italic on foot.
 
 `pipewire` - needed pipewire pipewire-pulse pipewire-alsa
-
 
 
 ## ✨ Arch Linux quick Installation:
@@ -72,14 +66,15 @@ Make script executable by running chmod +x (for example chmod +x paru-hyprland) 
 
 b.) You can install one by one packages or choose the automatic installer script.
 
-c.) If you want to add or edit packages, edit install-hyprland (old script), yay-hyprland or paru-hyprland script. Ensure packages are present on AUR or official else the script will fail.
+c.) If you want to add or edit packages, edit yay-hyprland or paru-hyprland script. Ensure packages are present on AUR or official else the script will fail.
 
-d.) Installation of Asus-ROG-utilities are entirely optional. if you select no, will skip the step.
+d.) Installation of Asus-ROG-utilities are entirely optional. This is only for Asus Laptop. if you select no, will skip the step.
 
-
+## ✨ NVIDIA-Hyprland notes:
+- kindly note, on configs I added all the nvidia variables from Hyprland wiki [`Link`](https://wiki.hyprland.org/Nvidia/) but by default they are not enabled. I've had issues like OBS not recording, or intermittent crashing etc, on my laptop. Check the ~/.config/hypr/configs/exec.conf and uncomment one by one to try. You can read through Hyprland-Wiki for some guidance.
 
 ## ✨ Manual Installation and Notes: 
-### you can copy, create, change, however, would appreciate if you have have a better solution / changes so we will all improve :)
+#### you can copy, create, change, however, would appreciate to submit like a pull request or issues if you have a better solution / changes so we will all improve :)
 
 These configs are used in my Laptop and Desktop. 
 Please note, Only provided are configs. Any Hyprland-related issues to be reported on Hyprland Github
@@ -111,5 +106,5 @@ Gentoo Specific
 2. Waybar - from Gentoo repo's waybar, I experienced unclickable workspaces. I have installed from useless-overlay. Click [`here`](https://github.com/JaKooLit/Ja_HyprLanD-dots/blob/main/misc/Gentoo-Waybar) for guidance
 3. For screen sharing, I use xdg-desktop-portal-wlr which seems to work. If you are having issues, install xdg-desktop-portal-hyprland
 4. if you use openrc, ensure to launch hyprland with dbus-run-session Hyprland. Omitting the dbus-run-session may cause [`runtime errors`](https://wiki.gentoo.org/wiki/Sway#Failed_to_connect_to_user_bus)
-5. `fonts` you need fontawesome and nerd-fonts use (3270 + symbols) (available in overlay) to display some icons in waybar
+5. `fonts` you need fontawesome and nerd-fonts (X jetbrainsmono symbolsmono) (available in overlay) to display some icons in waybar
 
