@@ -1,4 +1,8 @@
 #!/bin/bash
+# 
+# NOTE: SUGGEST YOU USE UPDATED SCRIPTS (EITHER yay-hyprland or paru-hyprland) These new scripts gives more flexible in choosing which hyprland to install.
+# Either hyprland-nvidia or hyprland only. Its included in this dots
+#
 # The following will be installed to run Hyprland on Asus G15 with RTX GPU
 # 
 # NOTE! IF YOU ADD OR REMOVE PACKAGES, make sure proper spelling as per AUR and official Arch Repo and that are present.
@@ -88,7 +92,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     yay -S --noconfirm foot swaybg swaylock-effects wofi wlogout mako thunar gvfs thunar-volman tumbler cava \
         ffmpegthumbs otf-font-awesome ttf-jetbrains-mono-nerd otf-font-awesome-4 ttf-fantasque-sans-mono qt5ct wl-clipboard \
         polkit-gnome python-requests grim slurp pamixer brightnessctl viewnior pavucontrol playerctl dracula-gtk-theme \
-        bluez bluez-utils blueman lxappearance bibata-cursor-theme-bin mousepad mpv network-manager-applet 
+        bluez bluez-utils blueman nwg-bin bibata-cursor-theme-bin mousepad mpv network-manager-applet 
     check_command_status "yay -S (packages)"
     
     # Start the bluetooth service
