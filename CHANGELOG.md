@@ -1,6 +1,7 @@
 # 15 April 2023
 - Added Nvidia-Hyprland Notes on Readme
 - clean up configs. Updated install-hyprland script (remove lxappearance and replaced with nwg-look-bin)
+- commented blurls = waybar on hyprland.conf to have a full transparent waybar
 
 # 14 April 2023
 - updated Readme Arch Linux installation notes
