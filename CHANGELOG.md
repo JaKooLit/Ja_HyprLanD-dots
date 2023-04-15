@@ -1,5 +1,6 @@
 # 15 April 2023
 - Added Nvidia-Hyprland Notes on Readme
+- clean up configs. Updated install-hyprland script (remove lxappearance and replaced with nwg-look-bin)
 
 # 14 April 2023
 - updated Readme Arch Linux installation notes
