@@ -1,3 +1,6 @@
+# 15 April 2023
+- Added Nvidia-Hyprland Notes on Readme
+
 # 14 April 2023
 - updated Readme Arch Linux installation notes
 
