@@ -1,3 +1,6 @@
+# 17 April 2023
+- Updated installer script to install only waybar-hyprland and not the git version. waybar-hyprland-git conflicts with cava
+
 # 15 April 2023
 - Added Nvidia-Hyprland Notes on Readme
 - clean up configs. Updated install-hyprland script (remove lxappearance and replaced with nwg-look-bin)
