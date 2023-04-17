@@ -131,7 +131,7 @@ if [[ $inst =~ ^[Yy]$ ]]; then
    theme_pkgs="dracula-gtk-theme bibata-cursor-theme-bin nwg-look-bin qt5ct"
    app_pkgs="thunar btop jq gvfs thunar-volman tumbler ffmpegthumbs  mousepad mpv bluez bluez-utils blueman "
    app_pkgs2="python-requests  pamixer brightnessctl viewnior pavucontrol playerctl mpv network-manager-applet cava"
-   git_pkgs="waybar-hyprland-git dracula-icons-git"
+   git_pkgs="waybar-hyprland dracula-icons-git"
        
     if ! paru -S --noconfirm $hypr_pkgs $font_pkgs $theme_pkgs $app_pkgs $app_pkgs2 $git_pkgs; then
         print_error " Failed to install additional packages."
