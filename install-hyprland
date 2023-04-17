@@ -80,8 +80,8 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     yay -S --noconfirm hyprland-nvidia-git 
     check_command_status "yay -S hyprland-nvidia-git"
     
-    yay -S --noconfirm waybar-hyprland-git 
-    check_command_status "yay -S waybar-hyprland-git"
+    yay -S --noconfirm waybar-hyprland 
+    check_command_status "yay -S waybar-hyprland"
     
     yay -S --noconfirm xdg-desktop-portal-hyprland
     check_command_status "yay -S xdg-desktop-portal-hyprland"
