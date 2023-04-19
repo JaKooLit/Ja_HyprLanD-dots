@@ -41,6 +41,16 @@
 # qt5ct: for visual settings for qt-apps
 # mousepad: simple text editor
 
+# ADDED!
+YELLOW="$(tput setaf 3)[NOTE]$(tput sgr0)"
+
+printf "$YELLOW WARNING! WARNING! WARNING! WARNING! WARNING!
+PLEASE USE paru-hyprland or yay-hyprland script!
+This script is OUTDATED and will be removed soon!"
+
+sleep 10
+
+
 # Check if yay is installed
 ISYAY=/sbin/yay
 if [ -f "$ISYAY" ]; then 
