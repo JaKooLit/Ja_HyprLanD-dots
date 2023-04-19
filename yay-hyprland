@@ -73,10 +73,10 @@ else
         makepkg -si --noconfirm 
         cd ..
     else
-        printf "%s - yay is required for this script, now exiting\n" "$RED"
+        printf "%s - yay is required for this script,......exiting\n" "$RED"
         exit
     fi
-# update system before proceeding to avoid issue
+# update system before proceed
     printf "${YELLOW} System Update to avoid issue\n" "GREEN"
     yay -Syu --noconfirm
 fi
@@ -103,6 +103,11 @@ print_success() {
 read -n1 -rep "${CAT} Would you like to install the packages? (y/n)" inst
 echo
 
+if [[ $inst =~ ^[Nn]$ ]]; then
+    printf "${YELLOW} No packages installed. Goodbye! \n"
+            exit 1
+        fi
+
 if [[ $inst =~ ^[Yy]$ ]]; then
     read -n1 -rep "${CAT} Would you like to install the Nvidia Hyprland? (y/n)" inst2
     echo
@@ -115,7 +120,7 @@ if [[ $inst =~ ^[Yy]$ ]]; then
         fi
     else
         # Install non-Nvidia Hyprland
-        printf "${YELLOW} None Nvidia-Hyprland will be installed."
+        printf "${YELLOW} None Nvidia-Hyprland will be installed.\n"
         if ! yay -S --noconfirm hyprland; then
             print_error " Failed to install Hyprland."
             exit 1
@@ -126,15 +131,14 @@ if [[ $inst =~ ^[Yy]$ ]]; then
     sleep 1
 
     # Install packages
-   hypr_pkgs="foot swaybg swaylock-effects wofi wlogout mako xdg-desktop-portal-hyprland  grim slurp wl-clipboard polkit-gnome"    
+   hypr_pkgs="waybar-hyprland foot swaybg swaylock-effects wofi wlogout mako xdg-desktop-portal-hyprland  grim slurp wl-clipboard polkit-gnome"    
    font_pkgs="otf-font-awesome ttf-jetbrains-mono-nerd otf-font-awesome-4 ttf-fantasque-sans-mono"
-   theme_pkgs="dracula-gtk-theme bibata-cursor-theme-bin nwg-look-bin qt5ct"
-   app_pkgs="thunar btop jq gvfs thunar-volman tumbler ffmpegthumbs  mousepad mpv bluez bluez-utils blueman "
+   app_pkgs="nwg-look-bin qt5ct thunar btop jq gvfs thunar-volman tumbler ffmpegthumbs  mousepad mpv bluez bluez-utils blueman "
    app_pkgs2="python-requests  pamixer brightnessctl viewnior pavucontrol playerctl mpv network-manager-applet cava"
-   git_pkgs="waybar-hyprland dracula-icons-git"
+
        
-    if ! yay -S --noconfirm $hypr_pkgs $font_pkgs $theme_pkgs $app_pkgs $app_pkgs2 $git_pkgs; then
-        print_error " Failed to install additional packages."
+    if ! yay -S --noconfirm $hypr_pkgs $font_pkgs $app_pkgs $app_pkgs2; then
+        print_error " Failed to install additional packages.\n"
         exit 1
     fi
 
@@ -146,12 +150,27 @@ if [[ $inst =~ ^[Yy]$ ]]; then
     fi
 
     echo
-    print_success " All packages installed successfully."
+    print_success " All necessary packages installed successfully."
 else
     echo
     print_error " Packages not installed."
     sleep 2
 fi
+
+# additional packages (themes)
+read -n1 -rep "${CAT} OPTIONAL - Would you like to install Dracula Icons and Themes and Bibata Cursor Themes? (y/n)" inst3
+    echo
+
+    if [[ $inst3 =~ ^[Yy]$ ]]; then
+	theme_pkgs="dracula-gtk-theme dracula-icons-git bibata-cursor-theme-bin"
+        if ! yay -S --noconfirm $theme_pkgs; then
+            print_error "Failed to install additional themes"
+            exit 1
+        fi
+    else
+        printf "${YELLOW} No additional themes installed.\n"
+        fi
+    
    
  # Clean out other portals
 printf "\n${YELLOW} Checking if any other xdg-desktop-portals exist...\n"
