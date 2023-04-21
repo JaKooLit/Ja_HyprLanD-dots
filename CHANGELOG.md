@@ -1,3 +1,6 @@
+# 21 April 2023
+- paru and yay hyprland scripts updated. Bluetooth stuffs will be optional
+
 # 19 April 2023
 - paru and yay hyprland scripts updated to install waybar-hyprland only and not the git packages. 
 - And also, Dracula icons and themes including Bibata Cursor themes are now optional!
