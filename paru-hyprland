@@ -66,8 +66,8 @@ if [ -f "$ISparu" ]; then
     printf "\n%s - paru was located, moving on.\n" "$GREEN"
 else 
     printf "\n%s - paru was NOT located\n" "$YELLOW"
-    read -n1 -rep "${CAT} Would you like to install paru (y,n)" INSTALL-paru
-    if [[ $INSTALL-paru =~ ^[Yy]$ ]]; then
+    read -n1 -rep "${CAT} Would you like to install paru (y,n)" INST
+    if [[ $INST =~ ^[Yy]$ ]]; then
         git clone https://aur.archlinux.org/paru-bin.git
         cd paru-bin
         makepkg -si --noconfirm 
