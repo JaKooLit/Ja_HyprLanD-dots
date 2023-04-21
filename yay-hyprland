@@ -66,8 +66,8 @@ if [ -f "$ISyay" ]; then
     printf "\n%s - yay was located, moving on.\n" "$GREEN"
 else 
     printf "\n%s - yay was NOT located\n" "$YELLOW"
-    read -n1 -rep "${CAT} Would you like to install yay (y,n)" INSTALL-yay
-    if [[ $INSTALL-yay =~ ^[Yy]$ ]]; then
+    read -n1 -rep "${CAT} Would you like to install yay (y,n)" INST
+    if [[ $INST =~ ^[Yy]$ ]]; then
         git clone https://aur.archlinux.org/yay-bin.git
         cd yay-bin
         makepkg -si --noconfirm 
