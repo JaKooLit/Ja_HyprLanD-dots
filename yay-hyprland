@@ -243,7 +243,7 @@ if [[ $BLUETOOTH =~ ^[Yy]$ ]]; then
     printf " Installing Bluetooth Packages...\n"
  blue_pkgs="bluez bluez-utils blueman"
     if ! yay -S --noconfirm $blue_pkgs; then
-       	print_error "Failed to install ROG packages"    
+       	print_error "Failed to install bluetooth packages"    
     printf " Activating Bluetooth Services...\n"
     sudo systemctl enable --now bluetooth.service
     sleep 2
