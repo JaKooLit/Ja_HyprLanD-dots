@@ -2,6 +2,7 @@
 - Clean up codes / script, folders and wallpaper
 - updated Thunar and XFCE4 folder 
 - update brightness script
+- updated script to make thunar as optional
 
 # 21 April 2023
 - paru and yay hyprland scripts updated. Bluetooth stuffs will be optional
