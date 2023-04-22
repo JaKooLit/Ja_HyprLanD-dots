@@ -1,5 +1,11 @@
 #!/bin/bash
 
+printf "$YELLOW CAUTION! CAUTION! CAUTION! CAUTION!
+Some Users Report issue using this driver, some games now launching!
+You can quit the script by pressing CTRL C"
+
+sleep 10
+
 git clone https://github.com/Frogging-Family/nvidia-all.git
 cd nvidia-all
 makepkg -si
