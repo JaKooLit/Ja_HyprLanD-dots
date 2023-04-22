@@ -1,3 +1,6 @@
+# 22 April 2023
+- Clean up codes / script, folders and wallpaper
+
 # 21 April 2023
 - paru and yay hyprland scripts updated. Bluetooth stuffs will be optional
 
