@@ -133,7 +133,7 @@ if [[ $inst =~ ^[Yy]$ ]]; then
     # Install packages
    hypr_pkgs="waybar-hyprland foot swaybg swaylock-effects wofi wlogout mako xdg-desktop-portal-hyprland  grim slurp wl-clipboard polkit-gnome"    
    font_pkgs="otf-font-awesome ttf-jetbrains-mono-nerd otf-font-awesome-4 ttf-fantasque-sans-mono"
-   app_pkgs="nwg-look-bin qt5ct thunar btop jq gvfs thunar-volman tumbler ffmpegthumbs  mousepad mpv"
+   app_pkgs="nwg-look-bin qt5ct btop jq gvfs ffmpegthumbs  mousepad mpv"
    app_pkgs2="python-requests  pamixer brightnessctl viewnior pavucontrol playerctl mpv network-manager-applet cava"
 
        
@@ -149,6 +149,23 @@ else
     print_error " Packages not installed."
     sleep 2
 fi
+
+# additional packages (File Manager)
+read -n1 -rep "${CAT} OPTIONAL - Would you like to install Thunar as file manager? (y/n)" inst4
+    echo
+
+    if [[ $inst4 =~ ^[Yy]$ ]]; then
+	file_pkgs="thunar thunar-volman tumbler"
+        if ! paru -S --noconfirm $file_pkgs; then
+            print_error "Failed to install thunar"
+            exit 1
+	    cp -r config/xfce4 ~/.config/ || { echo "Error: Failed to copy xfce4 config files."; exit 1; }
+            cp -r config/Thunar ~/.config/ || { echo "Error: Failed to copy Thunar config files."; exit 1; }
+        fi
+    else
+        printf "${YELLOW} Thunar will not be installed.\n"
+        fi
+ 
 
 # additional packages (themes)
 read -n1 -rep "${CAT} OPTIONAL - Would you like to install Dracula Icons and Themes and Bibata Cursor Themes? (y/n)" inst3
@@ -207,8 +224,6 @@ if [[ $CFG =~ ^[Yy]$ ]]; then
     cp -r config/foot ~/.config/ || { echo "Error: Failed to copy foot config files."; exit 1; }
     cp -r config/swaylock ~/.config/ || { echo "Error: Failed to copy swaylock config files."; exit 1; }
     cp -r config/wlogout ~/.config/ || { echo "Error: Failed to copy wlogout config files."; exit 1; }
-    cp -r config/xfce4 ~/.config/ || { echo "Error: Failed to copy xfce4 config files."; exit 1; }
-    cp -r config/Thunar ~/.config/ || { echo "Error: Failed to copy Thunar config files."; exit 1; }
     cp -r config/btop ~/.config/ || { echo "Error: Failed to copy btop config files."; exit 1; } 
     cp -r config/cava ~/.config/ || { echo "Error: Failed to copy cava config files."; exit 1; } 
     mkdir -p ~/Pictures
