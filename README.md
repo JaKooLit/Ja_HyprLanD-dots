@@ -103,7 +103,7 @@ Gentoo Specific
 </summary>
 
 1. [`Hyprland - Link to zugaina`](https://gpo.zugaina.org/gui-wm/hyprland) have 3 overlays. I am using wayland-desktop overlay. Nvidia and openrc users, you should look into thegreatmcpain overlay. Or of course you can compile hyprland from source
-2. Waybar - from Gentoo repo's waybar, I experienced unclickable workspaces. I have installed from useless-overlay. Click [`here`](https://github.com/JaKooLit/Ja_HyprLanD-dots/blob/main/misc/Gentoo-Waybar) for guidance
+2. Waybar - Gentoo have now wiki for Hyprland. Click [`here`](https://wiki.gentoo.org/wiki/Hyprland#Waybar) for guidance
 3. For screen sharing, I use xdg-desktop-portal-wlr which seems to work. If you are having issues, install xdg-desktop-portal-hyprland
 4. if you use openrc, ensure to launch hyprland with dbus-run-session Hyprland. Omitting the dbus-run-session may cause [`runtime errors`](https://wiki.gentoo.org/wiki/Sway#Failed_to_connect_to_user_bus)
 5. `fonts` you need fontawesome and nerd-fonts (X jetbrainsmono symbolsmono) (available in overlay) to display some icons in waybar
