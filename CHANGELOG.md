@@ -1,3 +1,6 @@
+# 30 April 2023
+- updated readme for Gentoo
+- 
 # 25 April 2023
 - Edited Mako notifications. Sound enabled by default and moved to top-center location
 
