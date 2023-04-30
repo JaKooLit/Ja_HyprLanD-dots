@@ -1,5 +1,6 @@
 # 30 April 2023
 - updated readme for Gentoo
+- added blueman-manager in windows rules to launch in float mode
 - 
 # 25 April 2023
 - Edited Mako notifications. Sound enabled by default and moved to top-center location
