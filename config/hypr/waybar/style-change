@@ -19,9 +19,11 @@ THEMEFILE="$HOME/.config/hypr/waybar/style/style${SWITCHTO}.css"
 if [ -f "$THEMEFILE" ]; then
     ln -sf "$THEMEFILE" "$HOME/.config/hypr/waybar/style.css"
 
-    # Restart waybar
-    killall -SIGUSR2 waybar
 else
     echo "Error: $THEMEFILE not found"
     exit 1
 fi
+
+# Restart waybar
+killall waybar
+exec ~/.config/hypr/scripts/statusbar
