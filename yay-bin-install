@@ -2,6 +2,13 @@
 
 # git needed
 
+printf "$YELLOW NOTE! NOTE! NOTE!
+PLEASE USE yay-hyprland (included) script!
+INSTALLATION OF YAY is included in that script!
+You can still use this script for installing yay if preffered!"
+
+sleep 10
+
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin
 makepkg -si
