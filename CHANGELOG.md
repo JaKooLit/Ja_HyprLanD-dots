@@ -1,3 +1,6 @@
+# 04 May 2023
+- keybinds updated to enable notify-send for keyboard brightness
+
 # 03 May 2023
 - Scripts, keybinds updated for swww utility (see https://youtu.be/6ZGzOjMJBe4 )
 - added Catpuccin themes for Hyprland. By default, catppuccin-mocha is pre-configured
