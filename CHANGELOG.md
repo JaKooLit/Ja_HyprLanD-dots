@@ -1,5 +1,6 @@
 # 03 May 2023
 - Scripts, keybinds updated for swww utility (see https://youtu.be/6ZGzOjMJBe4 )
+- added Catpuccin themes for Hyprland. By default, catppuccin-mocha is pre-configured
 
 # 01 May 2023
 - Replaced / updated wallpaper in preparation for wallpaper-utility
