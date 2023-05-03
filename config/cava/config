@@ -3,26 +3,32 @@
 
 [general]
 
-# Smoothing mode. Can be 'normal', 'scientific' or 'waves'.
-mode = normal
+# Smoothing mode. Can be 'normal', 'scientific' or 'waves'. DEPRECATED as of 0.6.0
+; mode = normal
 
 # Accepts only non-negative values.
-framerate = 60
+; framerate = 60
 
 # 'autosens' will attempt to decrease sensitivity if the bars peak. 1 = on, 0 = off
-# 'overshoot' allows bars to overshoot (in % of terminal height) without initiating autosens.
+# new as of 0.6.0 autosens of low values (dynamic range)
+# 'overshoot' allows bars to overshoot (in % of terminal height) without initiating autosens. DEPRECATED as of 0.6.0
 ; autosens = 1
 ; overshoot = 20
 
-# Manual sensitivity in %. Autosens must be turned off for this to take effect.
+# Manual sensitivity in %. If autosens is enabled, this will only be the initial value.
 # 200 means double height. Accepts only non-negative values.
 ; sensitivity = 100
 
 # The number of bars (0-200). 0 sets it to auto (fill up console).
 # Bars' width and space between bars in number of characters.
-bars = 0
-bar_width = 4
-bar_spacing = 1
+; bars = 0
+; bar_width = 2
+; bar_spacing = 1
+
+# For SDL width and space between bars is in pixels, defaults are:
+; bar_width = 20
+; bar_spacing = 5
+
 
 # Lower and higher cutoff frequencies for lowest and highest bars
 # the bandwidth of the visualizer.
@@ -32,10 +38,14 @@ bar_spacing = 1
 ; higher_cutoff_freq = 10000
 
 
+# Seconds with no input before cava goes to sleep mode. Cava will not perform FFT or drawing and
+# only check for input once per second. Cava will wake up once input is detected. 0 = disable.
+; sleep_timer = 0
+
 
 [input]
 
-# Audio capturing method. Possible methods are: 'pulse', 'alsa' or 'fifo'.
+# Audio capturing method. Possible methods are: 'pulse', 'alsa', 'fifo', 'sndio' or 'shmem'
 # Defaults to 'pulse', 'alsa' or 'fifo', in that order, dependent on what support cava was built with.
 #
 # All input methods uses the same config variable 'source'
@@ -46,29 +56,44 @@ bar_spacing = 1
 #
 # For alsa 'source' will be the capture device.
 # For fifo 'source' will be the path to fifo-file.
-method = pulse
-source = auto
+# For shmem 'source' will be /squeezelite-AA:BB:CC:DD:EE:FF where 'AA:BB:CC:DD:EE:FF' will be squeezelite's MAC address
+; method = pulse
+; source = auto
 
 ; method = alsa
 ; source = hw:Loopback,1
 
 ; method = fifo
 ; source = /tmp/mpd.fifo
+; sample_rate = 44100
+; sample_bits = 16
 
+; method = shmem
+; source = /squeezelite-AA:BB:CC:DD:EE:FF
+
+; method = portaudio
+; source = auto
 
 
 [output]
 
-# Ouput method. Can be 'ncurses', 'noncurses' or 'raw'.
-# 'noncurses' is for systems that does not suport ncurses.
-# 'raw' is a 16 bit data stream of the bar heights that can be used to send to other applications.
+# Output method. Can be 'ncurses', 'noncurses', 'raw' or 'sdl'.
+# 'noncurses' uses a custom framebuffer technique and prints only changes
+# from frame to frame in the terminal. 'ncurses' is default if supported.
+#
+# 'raw' is an 8 or 16 bit (configurable via the 'bit_format' option) data
+# stream of the bar heights that can be used to send to other applications.
 # 'raw' defaults to 200 bars, which can be adjusted in the 'bars' option above.
-method = ncurses
+#
+# 'sdl' uses the Simple DirectMedia Layer to render in a graphical context.
+; method = ncurses
 
-# Visual styles. Can be 'stereo' or 'mono'.
+# Visual channels. Can be 'stereo' or 'mono'.
 # 'stereo' mirrors both channels with low frequencies in center.
-# 'mono' averages both channels and outputs left to right lowest to highest frequencies.
-style = mono
+# 'mono' outputs left to right lowest to highest frequencies.
+# 'mono_option' set mono to either take input from 'left', 'right' or 'average'.
+; channels = stereo
+; mono_option = average
 
 # Raw output target. A fifo will be created if target does not exist.
 ; raw_target = /dev/stdout
@@ -87,38 +112,60 @@ style = mono
 ; bar_delimiter = 59
 ; frame_delimiter = 10
 
+# sdl window size and position. -1,-1 is centered.
+; sdl_width = 1000
+; sdl_height = 500
+; sdl_x = -1
+; sdl_y= -1
+
+[color]
+
+# Colors can be one of seven predefined: black, blue, cyan, green, magenta, red, white, yellow.
+# Or defined by hex code '#xxxxxx' (hex code must be within ''). User defined colors requires
+# ncurses output method and a terminal that can change color definitions such as Gnome-terminal or rxvt.
+# if supported, ncurses mode will be forced on if user defined colors are used.
+# default is to keep current terminal color
+; background = default
+; foreground = default
+
+# SDL only support hex code colors, these are the default:
+; background = '#111111'
+; foreground = '#33cccc'
 
 
-# [color]
+# Gradient mode, only hex defined colors (and thereby ncurses mode) are supported,
+# background must also be defined in hex  or remain commented out. 1 = on, 0 = off.
+# You can define as many as 8 different colors. They range from bottom to top of screen
+# In the [color] section
 
-# # Colors can be one of seven predefined: black, blue, cyan, green, magenta, red, white, yellow.
-# # Or defined by hex code '#xxxxxx' (hex code must be within ''). User defined colors requires a
-# # terminal that can change color definitions such as Gnome-terminal or rxvt.
-# ; background = black
-# ; foreground = cyan
+[color]
 
-# # Gradient mode, only hex defined colors are supported, background must also be defined in hex
-# # or remain commented out. 1 = on, 0 = off. Warning: for certain terminal emulators cava will
-# # not able to restore color definitions on exit, simply restart your terminal to restore colors.
-# gradient = 1
-# gradient_color_1 = '#0099ff'
-# gradient_color_2 = '#ff3399'
+gradient = 1
+
+gradient_color_1 = '#94e2d5'
+gradient_color_2 = '#89dceb'
+gradient_color_3 = '#74c7ec'
+gradient_color_4 = '#89b4fa'
+gradient_color_5 = '#cba6f7'
+gradient_color_6 = '#f5c2e7'
+gradient_color_7 = '#eba0ac'
+gradient_color_8 = '#f38ba8'
 
 
 
 [smoothing]
 
-# Multiplier for the integral smoothing calculations. Takes values from 0-0.99.
-# Higher values means smoother, but less precise. Set to 0 to disable.
-; integral = 0.7
+# Percentage value for integral smoothing. Takes values from 0 - 100.
+# Higher values means smoother, but less precise. 0 to disable.
+; integral = 77
 
-# Disables or enables the so-called "Monstercat smoothing". Set to 0 to disable.
-; monstercat = 1
-; waves = 1
+# Disables or enables the so-called "Monstercat smoothing" with or without "waves". Set to 0 to disable.
+; monstercat = 0
+; waves = 0
 
-# Set gravity multiplier for "drop off". Higher values means bars will drop faster.
-# Accepts only non-negative values. 0.5 means half gravity, 2 means double. Set to 0 to disable "drop off".
-; gravity = 1
+# Set gravity percentage for "drop off". Higher values means bars will drop faster.
+# Accepts only non-negative values. 50 means half gravity, 200 means double. Set to 0 to disable "drop off".
+; gravity = 100
 
 
 # In bar height, bars that would have been lower that this will not be drawn.
@@ -135,29 +182,3 @@ style = mono
 ; 3 = 1 # midtone
 ; 4 = 1
 ; 5 = 1 # treble
-
-
-[color]
-
-background = '#191724'
-gradient = 1
-gradient_count = 6
-gradient_color_1 = '#31748f'
-gradient_color_2 = '#9ccfd8'
-gradient_color_3 = '#c4a7e7'
-gradient_color_4 = '#ebbcba'
-gradient_color_5 = '#f6c177'
-gradient_color_6 = '#eb6f92'
-
-[color]
-
-gradient = 1
-
-gradient_color_1 = '#94e2d5'
-gradient_color_2 = '#89dceb'
-gradient_color_3 = '#74c7ec'
-gradient_color_4 = '#89b4fa'
-gradient_color_5 = '#cba6f7'
-gradient_color_6 = '#f5c2e7'
-gradient_color_7 = '#eba0ac'
-gradient_color_8 = '#f38ba8'
