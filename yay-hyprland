@@ -9,14 +9,15 @@
 # foot: This is the default terminal
 # waybar-hyprland: This is a fork of waybar with Hyprland workspace support
 # swaybg: This is used to set a desktop background image
+# swww: This is used for wallpaper switcher
 # swaylock-effects: This allows for the locking of the desktop its a fork that adds some editional visual effects
 # wofi: This is an application launcher menu
 # wlogout: This is a logout menu that allows for shutdown, reboot and sleep
 # mako: This is a graphical notification daemon
-# thunar with necessary plugins: This is a graphical file manager. Note, not all plugins included. See readme notes
 # ttf-jetbrains-mono-nerd : some nerd fonts needed for proper icons in waybar
 # otf-font-awesome-4 and otf-font-awesome # necessary for symbols / weather
 # ttf-droid - suggested for international fonts to display properly
+# ttf-fantasque-sans-mono - a mono font
 # polkit-gnome: needed to get superuser access on some graphical appliaction
 # python-requests: needed for the weather module script to execute
 # grim: This is a screenshot tool it grabs images from a Wayland compositor
@@ -31,6 +32,7 @@
 # mousepad: simple text editor
 
 # OPTIONAL - packages to be installed. (you will be asked on the script)
+# Thunar with necessary plugins
 # Bluetooth packages (blueman, bluez, bluez-utils)
 # Dracula icons and themes
 # Bibata Cursor theme
@@ -41,13 +43,14 @@ GREEN="$(tput setaf 2)[OK]$(tput sgr0)"
 RED="$(tput setaf 1)[ERROR]$(tput sgr0)"
 YELLOW="$(tput setaf 3)[NOTE]$(tput sgr0)"
 CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
+LOG="install.log"
 
 # Set the script to exit on error
 set -e
 
 printf "$(tput setaf 2) Welcome to the Arch Linux YAY Hyprland installer!\n $(tput sgr0)"
 
-sleep 3
+sleep 2
 
 printf "$YELLOW PLEASE BACKUP YOUR FILES BEFORE PROCEEDING!
 This script will overwrite some of your configs and files!"
@@ -58,11 +61,12 @@ printf "\n
 $YELLOW  Some commands requires you to enter your password inorder to execute
 If you are worried about entering your password, you can cancel the script now with CTRL Q or CTRL C and review contents of this script. \n"
 
-sleep 2
-# Check if yay is installed
-ISyay=/sbin/yay
+sleep 3
 
-if [ -f "$ISyay" ]; then
+# Check if yay is installed
+ISparu=/sbin/yay
+
+if [ -f "$ISparu" ]; then
     printf "\n%s - yay was located, moving on.\n" "$GREEN"
 else 
     printf "\n%s - yay was NOT located\n" "$YELLOW"
@@ -70,7 +74,7 @@ else
     if [[ $INST =~ ^[Yy]$ ]]; then
         git clone https://aur.archlinux.org/yay-bin.git
         cd yay-bin
-        makepkg -si --noconfirm 
+        makepkg -si --noconfirm 2>&1 | tee -a $LOG
         cd ..
     else
         printf "%s - yay is required for this script, now exiting\n" "$RED"
@@ -78,7 +82,7 @@ else
     fi
 # update system before proceed
     printf "${YELLOW} System Update to avoid issue\n" "GREEN"
-    yay -Syu --noconfirm
+    yay -Syu --noconfirm 2>&1 | tee -a $LOG
 fi
 
 # Prompt user to install packages
@@ -114,15 +118,15 @@ if [[ $inst =~ ^[Yy]$ ]]; then
 
     if [[ $inst2 =~ ^[Yy]$ ]]; then
         # Install Nvidia Hyprland
-        if ! yay -S --noconfirm hyprland-nvidia-git; then
-            print_error "Failed to install Nvidia Hyprland - pls remove any conflicting package"
+        if ! yay -S --noconfirm hyprland-nvidia-git 2>&1 | tee -a $LOG; then
+            print_error "Failed to install Nvidia Hyprland - please check the install.log"
             exit 1
         fi
     else
         # Install non-Nvidia Hyprland
         printf "${YELLOW} None Nvidia-Hyprland will be installed.\n"
-        if ! yay -S --noconfirm hyprland; then
-            print_error " Failed to install Hyprland."
+        if ! yay -S --noconfirm hyprland 2>&1 | tee -a $LOG; then
+            print_error " Failed to install Hyprland - please check the install.log."
             exit 1
         fi
     fi
@@ -131,14 +135,15 @@ if [[ $inst =~ ^[Yy]$ ]]; then
     sleep 1
 
     # Install packages
-   hypr_pkgs="waybar-hyprland-git foot swaybg swaylock-effects wofi wlogout mako xdg-desktop-portal-hyprland  grim slurp wl-clipboard polkit-gnome"    
+   git_pkgs="waybar-hyprland-git"
+   hypr_pkgs="foot swaybg swaylock-effects wofi wlogout mako xdg-desktop-portal-hyprland  grim slurp wl-clipboard polkit-gnome"    
    font_pkgs="otf-font-awesome ttf-jetbrains-mono-nerd otf-font-awesome-4 ttf-fantasque-sans-mono"
    app_pkgs="nwg-look-bin qt5ct btop jq gvfs ffmpegthumbs swww mousepad mpv"
    app_pkgs2="python-requests  pamixer brightnessctl viewnior pavucontrol playerctl mpv network-manager-applet cava"
 
        
-    if ! yay -S --noconfirm $hypr_pkgs $font_pkgs $app_pkgs $app_pkgs2; then
-        print_error " Failed to install additional packages.\n"
+    if ! yay -S --noconfirm $git_pkgs $hypr_pkgs $font_pkgs $app_pkgs $app_pkgs2 2>&1 | tee -a $LOG; then
+        print_error " Failed to install additional packages - please check the install.log.\n"
         exit 1
     fi
 
@@ -146,7 +151,7 @@ if [[ $inst =~ ^[Yy]$ ]]; then
     print_success " All necessary packages installed successfully."
 else
     echo
-    print_error " Packages not installed."
+    print_error " Packages not installed - please check the install.log."
     sleep 2
 fi
 
@@ -156,8 +161,8 @@ read -n1 -rep "${CAT} OPTIONAL - Would you like to install Thunar as file manage
 
     if [[ $inst4 =~ ^[Yy]$ ]]; then
 	file_pkgs="thunar thunar-volman tumbler"
-        if ! yay -S --noconfirm $file_pkgs; then
-            print_error "Failed to install thunar"
+        if ! yay -S --noconfirm $file_pkgs 2>&1 | tee -a $LOG; then
+            print_error "Failed to install thunar - please check the install.log"
             exit 1
 	    cp -r config/xfce4 ~/.config/ || { echo "Error: Failed to copy xfce4 config files."; exit 1; }
             cp -r config/Thunar ~/.config/ || { echo "Error: Failed to copy Thunar config files."; exit 1; }
@@ -173,12 +178,12 @@ read -n1 -rep "${CAT} OPTIONAL - Would you like to install Dracula Icons and The
 
     if [[ $inst3 =~ ^[Yy]$ ]]; then
 	theme_pkgs="dracula-gtk-theme dracula-icons-git bibata-cursor-theme-bin"
-        if ! yay -S --noconfirm $theme_pkgs; then
-            print_error "Failed to install additional themes"
+        if ! yay -S --noconfirm $theme_pkgs 2>&1 | tee -a $LOG; then
+            print_error "Failed to install additional themes- please check the install.log"
             exit 1
         fi
     else
-        printf "${YELLOW} No additional themes installed.\n"
+        printf "${YELLOW} No additional themes will be installed.\n"
         fi
  
  # Clean out other portals
@@ -187,27 +192,27 @@ printf "${YELLOW} Clearing any other xdg-desktop-portal implementations...\n"
 # Check if packages are installed and uninstall if present
 if pacman -Qs xdg-desktop-portal-gnome > /dev/null ; then
     echo "Removing xdg-desktop-portal-gnome..."
-    sudo pacman -R --noconfirm xdg-desktop-portal-gnome
+    sudo pacman -R --noconfirm xdg-desktop-portal-gnome 2>&1 | tee -a $LOG
 fi
 
 if pacman -Qs xdg-desktop-portal-gtk > /dev/null ; then
     echo "Removing xdg-desktop-portal-gtk..."
-    sudo pacman -R --noconfirm xdg-desktop-portal-gtk
+    sudo pacman -R --noconfirm xdg-desktop-portal-gtk 2>&1 | tee -a $LOG
 fi
 
 if pacman -Qs xdg-desktop-portal-kde > /dev/null ; then
     echo "Removing xdg-desktop-portal-kde..."
-    sudo pacman -R --noconfirm xdg-desktop-portal-kde
+    sudo pacman -R --noconfirm xdg-desktop-portal-kde 2>&1 | tee -a $LOG
 fi
 
 if pacman -Qs xdg-desktop-portal-wlr > /dev/null ; then
     echo "Removing xdg-desktop-portal-wlr..."
-    sudo pacman -R --noconfirm xdg-desktop-portal-wlr
+    sudo pacman -R --noconfirm xdg-desktop-portal-wlr 2>&1 | tee -a $LOG
 fi
 
 if pacman -Qs xdg-desktop-portal-lxqt > /dev/null ; then
     echo "Removing xdg-desktop-portal-lxqt..."
-    sudo pacman -R --noconfirm xdg-desktop-portal-lxqt
+    sudo pacman -R --noconfirm xdg-desktop-portal-lxqt 2>&1 | tee -a $LOG
 fi
 
 print_success " All other XDG-DESKTOP-PORTAL Implementation Cleared"
@@ -261,8 +266,8 @@ read -n1 -rep "${CAT} OPTIONAL - Would you like to install Bluetooth packages? (
 if [[ $BLUETOOTH =~ ^[Yy]$ ]]; then
     printf " Installing Bluetooth Packages...\n"
  blue_pkgs="bluez bluez-utils blueman"
-    if ! yay -S --noconfirm $blue_pkgs; then
-       	print_error "Failed to install bluetooth packages"    
+    if ! yay -S --noconfirm $blue_pkgs 2>&1 | tee -a $LOG; then
+       	print_error "Failed to install bluetooth packages - please check the install.log"    
     printf " Activating Bluetooth Services...\n"
     sudo systemctl enable --now bluetooth.service
     sleep 2
@@ -276,8 +281,8 @@ read -n1 -rep "${CAT} (OPTIONAL - ONLY for ROG Laptops) Would you like to instal
 if [[ $ROG =~ ^[Yy]$ ]]; then
     printf " Installing ASUS ROG packages...\n"
  ROG_pkgs="asusctl supergfxctl rog-control-center"
-    if ! yay -S --noconfirm $ROG_pkgs; then
-       	print_error "Failed to install ROG packages"    
+    if ! yay -S --noconfirm $ROG_pkgs 2>&1 | tee -a $LOG; then
+       	print_error "Failed to install ROG packages- please check the install.log"    
     printf " Activating ROG services...\n"
     sudo systemctl daemon-reload && sudo systemctl enable --now supergfxd
     sleep 2
@@ -307,7 +312,7 @@ if [[ $HYP =~ ^[Yy]$ ]]; then
     if command -v Hyprland >/dev/null; then
         exec Hyprland
     else
-         print_error " Hyprland not found. Please make sure it is installed and try again.\n"
+         print_error " Hyprland not found. Please make sure Hyprland is installed by checking install.log.\n"
         exit 1
     fi
 else
