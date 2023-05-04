@@ -64,9 +64,9 @@ If you are worried about entering your password, you can cancel the script now w
 sleep 3
 
 # Check if yay is installed
-ISparu=/sbin/yay
+ISyay=/sbin/yay
 
-if [ -f "$ISparu" ]; then
+if [ -f "$ISyay" ]; then
     printf "\n%s - yay was located, moving on.\n" "$GREEN"
 else 
     printf "\n%s - yay was NOT located\n" "$YELLOW"
