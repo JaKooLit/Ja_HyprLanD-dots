@@ -81,7 +81,7 @@ else
         exit
     fi
 # update system before proceed
-    printf "${YELLOW} System Update to avoid issue\n" "GREEN"
+    printf "${YELLOW} System Update to avoid issue\n"
     yay -Syu --noconfirm 2>&1 | tee -a $LOG
 fi
 
