@@ -1,5 +1,7 @@
 # 04 May 2023
 - keybinds updated to enable notify-send for keyboard brightness
+- changed script to install waybar-hyprland-git instead. Issue in building waybar-hyprland
+- updated waybar modules to align with jetbrains font update
 
 # 03 May 2023
 - Scripts, keybinds updated for swww utility (see https://youtu.be/6ZGzOjMJBe4 )
