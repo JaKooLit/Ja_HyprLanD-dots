@@ -4,6 +4,7 @@
 - updated waybar modules and weather to align with jetbrains font update
 - updated paru and yay hyprland scripts to add logging of installation inoder to debug easily
 - updated screenshot script to delay 1 secs for notification
+- updated wofi-beats script for better notifications
 
 # 03 May 2023
 - Scripts, keybinds updated for swww utility (see https://youtu.be/6ZGzOjMJBe4 )

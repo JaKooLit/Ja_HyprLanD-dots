@@ -31,8 +31,8 @@ layer=overlay
 anchor=top-center
 
 background-color=#1e1e2e
-text-color=#d9e0ee
-border-color=#313244
+text-color=#cdd6f4
+border-color=#cba6f7
 progress-color=over #89b4fa
 
 [urgency=low]
@@ -40,7 +40,7 @@ border-color=#313244
 default-timeout=2000
 
 [urgency=normal]
-border-color=#313244
+border-color=#cba6f7
 default-timeout=5000
 
 [urgency=high]
