@@ -1,3 +1,7 @@
+# Changelogs #
+# 20 May 2023
+- updated wallpaper-switcher script for better flexibility
+
 # 04 May 2023
 - keybinds updated to enable notify-send for keyboard brightness
 - changed script to install waybar-hyprland-git instead. Issue in building waybar-hyprland
