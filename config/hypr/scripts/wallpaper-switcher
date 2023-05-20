@@ -1,15 +1,32 @@
 #!/bin/bash
 
-## Files
-CONFIG="$HOME/.config/hypr/wofi/config"
-STYLE="$HOME/.config/hypr/wofi/style.css"
-COLORS="$HOME/.config/hypr/wofi/colors"
-
-
+# WALLPAPERS PATH
 DIR=$HOME/Pictures/wallpapers
-PICS=($(ls ${DIR}))
 
-RANDOMPICS=${PICS[ $RANDOM % ${#PICS[@]} ]}
+# Transition config (type swww img --help for more settings
+FPS=30
+TYPE="simple"
+DURATION=3
+
+# wofi window config (in %)
+WIDTH=20
+HEIGHT=30
+
+SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION"
+
+
+PICS=($(ls ${DIR} | grep -e ".jpg$" -e ".jpeg$" -e ".png$" -e ".gif$"))
+
+RANDOM_PIC=${PICS[ $RANDOM % ${#PICS[@]} ]}
+RANDOM_PIC_NAME="${#PICS[@]}. random"
+
+
+# WOFI STYLES
+CONFIG="$HOME/.config/hypr/wofifull/config"
+STYLE="$HOME/.config/hypr/wofifull/style.css"
+COLORS="$HOME/.config/hypr/wofifull/colors"
+
+# to check if swaybg is running
 
 if [[ $(pidof swaybg) ]]; then
   pkill swaybg
@@ -17,72 +34,55 @@ fi
 
 ## Wofi Command
 wofi_command="wofi --show dmenu \
-			--prompt 'choose..'
-			--conf ${CONFIG} --style ${STYLE} --color ${COLORS} \
-			--width=300 --height=400 \
+			--prompt choose...
+			--conf $CONFIG --style $STYLE --color $COLORS \
+			--width=$WIDTH% --height=$HEIGHT% \
 			--cache-file=/dev/null \
 			--hide-scroll --no-actions \
-			--define=matching=fuzzy"
+			--matching=fuzzy"
 
 menu(){
-printf "1. cityscape\n" 
-printf "2. cityscape2\n" 
-printf "3. colorful-snow\n" 
-printf "4. Hong-Kong\n" 
-printf "5. Into-the-night\n"
-printf "6. lain\n"
-printf "7. lonely-night\n"
-printf "8. neon\n"
-printf "9. old\n"
-printf "10. random"
+    # Here we are looping in the PICS array that is composed of all images in the $DIR
+    # folder 
+    for i in ${!PICS[@]}; do
+        # keeping the .gif to make sue you know it is animated
+        if [[ -z $(echo ${PICS[$i]} | grep .gif$) ]]; then
+            printf "$i. $(echo ${PICS[$i]} | cut -d. -f1)\n" # n°. <name_of_file_without_identifier>
+        else
+            printf "$i. ${PICS[$i]}\n"
+        fi
+    done
+
+    printf "$RANDOM_PIC_NAME"
 }
 
 swww query || swww init
 
 main() {
-choice=$(menu | ${wofi_command} | cut -d. -f1)
-case $choice in
-1)
-    swww img ${DIR}/cityscape.jpg --transition-fps 30 --transition-type any --transition-duration 3
-    return
-    ;;
-2)
-    swww img ${DIR}/cityscape2.jpg --transition-fps 30 --transition-type any --transition-duration 3
-    return
-    ;;
-3)
-    swww img ${DIR}/colorful-snow.jpg --transition-fps 30 --transition-type any --transition-duration 3
-    return
-    ;;
-4)
-    swww img ${DIR}/hong-kong.jpg --transition-fps 30 --transition-type any --transition-duration 3
-    return
-    ;;
-5)
-    swww img ${DIR}/into-the-night.jpg --transition-fps 30 --transition-type any --transition-duration 3
-    return
-    ;;
-6)
-    swww img ${DIR}/lain.jpg --transition-fps 30 --transition-type any --transition-duration 3
-    return
-    ;;
-7)
-    swww img ${DIR}/lonely-night.jpg --transition-fps 30 --transition-type any --transition-duration 3
-    return
-    ;;
-8)
-    swww img ${DIR}/neon.jpg --transition-fps 30 --transition-type any --transition-duration 3
-    return
-    ;;
-9)
-    swww img ${DIR}/old.png --transition-fps 30 --transition-type any --transition-duration 3
-    return
-    ;;
-10)
-    swww img ${DIR}/${RANDOMPICS} --transition-fps 30 --transition-type any --transition-duration 3
-    return
-    ;;
-esac
+    choice=$(menu | ${wofi_command})
+
+    # no choice case
+    if [[ -z $choice ]]; then return; fi
+
+    # random choice case
+    if [ "$choice" = "$RANDOM_PIC_NAME" ]; then
+        swww img ${DIR}/${RANDOM_PIC} $SWWW_PARAMS
+        return
+    fi
+    
+    pic_index=$(echo $choice | cut -d. -f1)
+    swww img ${DIR}/${PICS[$pic_index]} $SWWW_PARAMS
 }
 
-killall -f || main
+# Check if wofi is already running
+if pidof wofi >/dev/null; then
+    killall wofi
+    exit 0
+else
+    main
+fi
+
+# Uncomment to launch something if a choice was made 
+# if [[ -n "$choice" ]]; then
+    # Restart Waybar
+# fi
