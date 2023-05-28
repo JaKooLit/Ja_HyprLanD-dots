@@ -235,28 +235,7 @@ if [[ $CFG =~ ^[Yy]$ ]]; then
     cp -r wallpapers ~/Pictures/ || { echo "Error: Failed to copy wallpapers."; exit 1; }
     
     # Set some files as executable 
-    chmod +x ~/.config/hypr/scripts/airplane-mode.sh
-    chmod +x ~/.config/hypr/scripts/brightness
-    chmod +x ~/.config/hypr/scripts/brightness-kbd
-    chmod +x ~/.config/hypr/scripts/changeLayout
-    chmod +x ~/.config/hypr/scripts/changeWallpaper
-    chmod +x ~/.config/hypr/scripts/changeWallpaper2
-    chmod +x ~/.config/hypr/scripts/fullmenu
-    chmod +x ~/.config/hypr/scripts/glassmorphismToggle
-    chmod +x ~/.config/hypr/scripts/lockscreen
-    chmod +x ~/.config/hypr/scripts/menu
-    chmod +x ~/.config/hypr/scripts/notifications
-    chmod +x ~/.config/hypr/scripts/portal-arch-hyprland
-    chmod +x ~/.config/hypr/scripts/screenshot
-    chmod +x ~/.config/hypr/scripts/startup
-    chmod +x ~/.config/hypr/scripts/statusbar
-    chmod +x ~/.config/hypr/scripts/switch-lid.sh
-    chmod +x ~/.config/hypr/scripts/touchpad.sh
-    chmod +x ~/.config/hypr/scripts/volume
-    chmod +x ~/.config/hypr/scripts/wallpaper-switcher
-    chmod +x ~/.config/hypr/scripts/waybar-style-change
-    chmod +x ~/.config/hypr/scripts/weather.sh
-    chmod +x ~/.config/hypr/scripts/wofi-beats
+    chmod +x ~/.config/hypr/scripts/* 2>&1 | tee -a "$LOG"
 else
    print_error " No Config files and wallpaper files copied"
 fi
