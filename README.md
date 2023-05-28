@@ -1,3 +1,8 @@
+## NOTE: Highly suggest to ran the Hyprland-v2.1 Install Script. Much more up to date and has easier Hyprland-v2.2 upgrade.
+
+[`Github Link for Hyprland-v2.1`](https://github.com/JaKooLit/Hyprland-v2.1)
+
+
 https://user-images.githubusercontent.com/85185940/227948968-03e5097d-9850-437f-8109-8d376bf81e9f.mp4
 
 <br>
