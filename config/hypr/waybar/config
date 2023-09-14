@@ -12,7 +12,7 @@
   "margin-right": 2,
 
   "modules-left": [
-	"wlr/workspaces", 
+	"hyprland/workspaces", 
 	"cpu", 
 	"temperature", 
 	"memory", 
