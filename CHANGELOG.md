@@ -1,4 +1,9 @@
 # Changelogs #
+
+## 27-Sep-2023
+- remove auto start of portal-hyprland-hyprland
+- removal of Virtual-1 monitor in Monitors.conf
+
 # 20 May 2023
 - updated wallpaper-switcher script for better flexibility
 
