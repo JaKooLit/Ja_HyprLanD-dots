@@ -1,4 +1,4 @@
-## NOTE: Highly suggest to ran the Hyprland-v2.1 Install Script. Much more up to date and has easier Hyprland-v2.2 upgrade.
+# ATTENTION. Arch Hyprland Install Script has been moved to a newer and updated Script. [`CLICK`](https://github.com/JaKooLit/Arch-Hyprland) here for the link.
 
 [`Github Link for Hyprland-v2.1`](https://github.com/JaKooLit/Hyprland-v2.1)
 
